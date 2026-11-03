@@ -1,0 +1,73 @@
+{
+  "name": "VenueNotification",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the recipient"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue"
+    },
+    "venue_name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "happy_hour_updated",
+        "deals_updated",
+        "new_event",
+        "new_listing"
+      ],
+      "default": "happy_hour_updated"
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "user_id",
+    "venue_id",
+    "type",
+    "title",
+    "message"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

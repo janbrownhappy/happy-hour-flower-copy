@@ -1,0 +1,54 @@
+{
+  "name": "VenueType",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name (e.g. 'Gastropub')"
+    },
+    "slug": {
+      "type": "string",
+      "description": "Stable machine key (e.g. 'gastropub')"
+    },
+    "venue_group": {
+      "type": "string",
+      "description": "High-level grouping used to organize the picker (e.g. 'Bars & Nightlife', 'Restaurants')"
+    },
+    "definition": {
+      "type": "string",
+      "description": "Short plain-language definition shown as helper text to admins/owners"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Display order within its group"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this venue type is selectable/filterable"
+    }
+  },
+  "required": [
+    "name",
+    "slug"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

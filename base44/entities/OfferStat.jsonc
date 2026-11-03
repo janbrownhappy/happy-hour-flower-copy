@@ -1,0 +1,86 @@
+{
+  "name": "OfferStat",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) the offer belongs to"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the venue owner, denormalized so owners can read their own offer stats without an unsupported RLS subquery"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of tracking (denormalized for display)"
+    },
+    "day": {
+      "type": "string",
+      "enum": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "description": "Which happy-hour day this offer belongs to"
+    },
+    "offer_text": {
+      "type": "string",
+      "description": "The deal/offer text at time of tracking (denormalized so stats survive edits)"
+    },
+    "offer_key": {
+      "type": "string",
+      "description": "Stable identifier for the offer within a venue: `${day}::${offer_text}`. Used to aggregate views and redeem clicks for the same offer."
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total times this offer was shown to a consumer"
+    },
+    "redeem_click_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total times a consumer clicked to redeem this offer"
+    },
+    "last_activity_at": {
+      "type": "string",
+      "description": "ISO timestamp of the most recent view or redeem click"
+    }
+  },
+  "required": [
+    "venue_id",
+    "offer_key"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

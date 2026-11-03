@@ -1,0 +1,195 @@
+{
+  "name": "Attribution",
+  "type": "object",
+  "properties": {
+    "hhf_user_id": {
+      "type": "string",
+      "description": "Base44 User.id"
+    },
+    "anonymous_amplitude_device_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "description": "Last-touch source"
+    },
+    "channel": {
+      "type": "string",
+      "description": "Last-touch channel"
+    },
+    "campaign": {
+      "type": "string",
+      "description": "Last-touch campaign"
+    },
+    "placement": {
+      "type": "string",
+      "description": "Last-touch placement"
+    },
+    "qr_id": {
+      "type": "string",
+      "description": "Last-touch QR id"
+    },
+    "venue_id": {
+      "type": "string"
+    },
+    "special_id": {
+      "type": "string"
+    },
+    "ambassador_id": {
+      "type": "string"
+    },
+    "market": {
+      "type": "string"
+    },
+    "destination_type": {
+      "type": "string"
+    },
+    "destination_id": {
+      "type": "string"
+    },
+    "first_touch_at": {
+      "type": "string"
+    },
+    "last_touch_at": {
+      "type": "string"
+    },
+    "first_source": {
+      "type": "string"
+    },
+    "first_channel": {
+      "type": "string"
+    },
+    "first_campaign": {
+      "type": "string"
+    },
+    "first_placement": {
+      "type": "string"
+    },
+    "first_qr_id": {
+      "type": "string"
+    },
+    "first_venue_id": {
+      "type": "string"
+    },
+    "first_ambassador_id": {
+      "type": "string"
+    },
+    "touch_history": {
+      "type": "array",
+      "description": "Every qualifying touch, append-only",
+      "items": {
+        "type": "object",
+        "properties": {
+          "qr_id": {
+            "type": "string"
+          },
+          "campaign": {
+            "type": "string"
+          },
+          "placement": {
+            "type": "string"
+          },
+          "venue_id": {
+            "type": "string"
+          },
+          "touched_at": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "signup_qr_id": {
+      "type": "string",
+      "description": "QR credited with the signup (touch within 7 days before signup)"
+    },
+    "signup_at": {
+      "type": "string"
+    },
+    "venue_viewed_qr_id": {
+      "type": "string"
+    },
+    "venue_viewed_at": {
+      "type": "string"
+    },
+    "special_viewed_qr_id": {
+      "type": "string"
+    },
+    "special_viewed_at": {
+      "type": "string"
+    },
+    "directions_qr_id": {
+      "type": "string"
+    },
+    "directions_clicked_at": {
+      "type": "string"
+    },
+    "arrival_qr_id": {
+      "type": "string"
+    },
+    "arrival_at": {
+      "type": "string"
+    },
+    "arrival_method": {
+      "type": "string"
+    },
+    "premium_qr_id": {
+      "type": "string"
+    },
+    "premium_at": {
+      "type": "string"
+    },
+    "appsflyer_id": {
+      "type": "string"
+    },
+    "media_source": {
+      "type": "string"
+    },
+    "af_channel": {
+      "type": "string"
+    },
+    "af_adset": {
+      "type": "string"
+    },
+    "af_ad": {
+      "type": "string"
+    },
+    "deep_link_value": {
+      "type": "string"
+    },
+    "deep_link_sub1": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "hhf_user_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.hhf_user_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

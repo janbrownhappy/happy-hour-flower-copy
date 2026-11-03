@@ -1,0 +1,134 @@
+{
+  "name": "Listing",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "number",
+      "description": "FK to venue (legacy numeric ID)"
+    },
+    "venue_ref_id": {
+      "type": "string",
+      "description": "Base44 venue id (used for new listings)"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name (denormalized for display)"
+    },
+    "name": {
+      "type": "string"
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "deals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_recurring": {
+      "type": "boolean",
+      "default": false
+    },
+    "recurring_type": {
+      "type": "string"
+    },
+    "is_premium_exclusive": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending"
+    },
+    "submitted_at": {
+      "type": "string"
+    },
+    "admin_note": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when this listing/deal expires (YYYY-MM-DD). Used to flag expiring deals."
+    },
+    "expiry_notified_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the expiry reminder was last sent, to avoid duplicate alerts."
+    },
+    "expired_notified_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the 'your offer has expired' email was sent to the owner. Starts the 24h grace window before flagging for manual removal."
+    },
+    "flagged_for_removal": {
+      "type": "boolean",
+      "default": false,
+      "description": "Set true when an expired offer was not updated/removed within 24h of the expiry notification, flagging it for manual admin removal."
+    },
+    "flagged_for_removal_at": {
+      "type": "string",
+      "description": "ISO timestamp of when this expired offer was flagged for manual admin removal."
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.status": "approved"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

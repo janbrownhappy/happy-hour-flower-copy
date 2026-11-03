@@ -1,0 +1,41 @@
+{
+  "name": "Check Expiring Deals (Every 6 Hours)",
+  "description": "Scans all approved listings for deals expiring within 48 hours and emails venue owners + admin to remind them to update.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "interval",
+      "cron_expression": null,
+      "one_time_date": null,
+      "timezone": "UTC",
+      "interval_value": 6,
+      "interval_unit": "hours",
+      "interval_anchor": "2026-06-09T11:05:49.032000",
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "check_expiring_deals_every_6_hours",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "checkExpiringDeals",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

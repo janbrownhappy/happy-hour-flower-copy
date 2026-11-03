@@ -1,0 +1,34 @@
+{
+  "name": "Competitor Deal Alert",
+  "description": "When a venue updates its deals, alerts owners who track it as a competitor.",
+  "trigger": {
+    "condition": "${ ((.trigger.changed_fields | index(\"deals\") != null) or (.trigger.changed_fields | index(\"deals_by_day\") != null)) }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "update"
+      ],
+      "entity_name": "Venue"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "competitor_deal_alert",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyCompetitorDeal",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

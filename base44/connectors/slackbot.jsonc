@@ -1,0 +1,10 @@
+{
+  "type": "slackbot",
+  "scopes": [
+    "chat:write",
+    "chat:write.public",
+    "chat:write.customize",
+    "channels:read",
+    "groups:read"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Auto-assign Venue Market",
+  "description": "When a venue is created without a market, assign the market used by other venues in the same city.",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "entity_name": "Venue",
+      "events": [
+        "create"
+      ]
+    },
+    "condition": "${ (.trigger.data.market_id // \"\") == \"\" }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "auto_assign_venue_market",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "assign_market": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "assignVenueMarket",
+            "args": {
+              "venue_id": "${ .trigger.entity_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Assign market",
+            "description": "Match by city"
+          }
+        }
+      }
+    ]
+  }
+}

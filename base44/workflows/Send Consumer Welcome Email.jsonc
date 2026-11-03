@@ -1,0 +1,34 @@
+{
+  "name": "Send Consumer Welcome Email",
+  "description": "Sends a welcome email to new consumers the moment their profile is created (skips venue owners and admins).",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Profile"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_consumer_welcome_email",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendConsumerWelcome",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

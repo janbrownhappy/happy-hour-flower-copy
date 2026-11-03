@@ -1,0 +1,34 @@
+{
+  "name": "Waitlist Signup Confirmation Email",
+  "description": "",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Waitlist"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "waitlist_signup_confirmation_email",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendWaitlistConfirmation",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "name": "EnrichmentDiscrepancy",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Denormalized venue name for display"
+    },
+    "field": {
+      "type": "string",
+      "description": "Venue field key (e.g. 'phone'), 'amenity:<slug>' for an amenity, or 'photo_urls' for a candidate photo"
+    },
+    "current_value": {
+      "type": "string",
+      "description": "The protected value currently on the record (JSON string for lists)"
+    },
+    "current_source": {
+      "type": "string",
+      "description": "Provenance of the current value (venue_owner, hhf_admin, google_places, ...). Empty = unknown/historical."
+    },
+    "proposed_value": {
+      "type": "string",
+      "description": "What the automated source reported (JSON string for lists). Empty when the source could not confirm the value."
+    },
+    "proposed_source": {
+      "type": "string",
+      "description": "Automated source that produced the finding (google_places, gemini_web_research, automated_enrichment, other_external_source, future scrapfly_*)"
+    },
+    "evidence": {
+      "type": "string",
+      "description": "Cited evidence for the finding, when available"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "URL of the evidence, when available"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Why the automated write was blocked (e.g. 'claimed venue \u2014 suggestion only', 'Unable to verify against Google Places')"
+    },
+    "origin_function": {
+      "type": "string",
+      "description": "Which enrichment process recorded this"
+    },
+    "detected_at": {
+      "type": "string",
+      "description": "ISO timestamp of the most recent detection"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "reviewed",
+        "dismissed"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "venue_id",
+    "field"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

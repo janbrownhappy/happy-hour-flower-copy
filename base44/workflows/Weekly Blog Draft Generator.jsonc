@@ -1,0 +1,47 @@
+{
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "weekly_blog_draft_generator",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "generate_drafts": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "generateWeeklyBlogDrafts",
+            "args": {
+              "count": 2
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Generate blog drafts",
+            "description": "2 AI drafts for review"
+          }
+        }
+      }
+    ]
+  },
+  "description": "Every Monday morning, generates a small batch of AI blog drafts from fresh topic suggestions. Drafts land in the blog admin as 'scheduled' for review.",
+  "name": "Weekly Blog Draft Generator",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 7 * * 1",
+      "one_time_date": null,
+      "timezone": "America/New_York",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  }
+}

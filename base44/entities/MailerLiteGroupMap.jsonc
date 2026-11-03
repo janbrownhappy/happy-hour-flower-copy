@@ -1,0 +1,57 @@
+{
+  "name": "MailerLiteGroupMap",
+  "type": "object",
+  "properties": {
+    "trigger_key": {
+      "type": "string",
+      "enum": [
+        "consumer_signup",
+        "consumer_premium",
+        "waitlist_signup",
+        "lead_consumer",
+        "lead_venue_owner",
+        "venue_active"
+      ],
+      "description": "App activity event that routes a subscriber to this group"
+    },
+    "group_id": {
+      "type": "string",
+      "description": "MailerLite group id this trigger adds the subscriber to"
+    },
+    "group_name": {
+      "type": "string",
+      "description": "MailerLite group name (denormalized for display)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this mapping is active"
+    }
+  },
+  "required": [
+    "trigger_key",
+    "group_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

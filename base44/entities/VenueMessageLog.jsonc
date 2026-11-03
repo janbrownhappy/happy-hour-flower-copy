@@ -1,0 +1,85 @@
+{
+  "name": "VenueMessageLog",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of send (denormalized)"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message content sent to fans"
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Channels used: push, sms"
+    },
+    "recipient_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of fans targeted"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "sent",
+        "partial",
+        "failed"
+      ],
+      "default": "sent",
+      "description": "Delivery status"
+    },
+    "error_details": {
+      "type": "string",
+      "description": "Error message if status is failed or partial"
+    },
+    "sent_by_user_id": {
+      "type": "string",
+      "description": "User who triggered the send"
+    },
+    "sent_by_name": {
+      "type": "string",
+      "description": "Name of user who triggered the send"
+    }
+  },
+  "required": [
+    "venue_id",
+    "message"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.sent_by_user_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Cuisine",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name (e.g. 'Italian')"
+    },
+    "slug": {
+      "type": "string",
+      "description": "Stable machine key (e.g. 'italian')"
+    },
+    "cuisine_group": {
+      "type": "string",
+      "description": "Regional grouping used to organize the picker (e.g. 'European', 'Asian', 'Americas')"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Display order within its group"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this cuisine is selectable/filterable"
+    }
+  },
+  "required": [
+    "name",
+    "slug"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "description": "Every evening at 6pm, emails the account owner how many new venues are waiting in the Instagram review queue, with a link to review them.",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "daily_instagram_queue_summary",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "send_summary": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendInstagramQueueSummary",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Email queue summary",
+            "description": "6pm daily"
+          }
+        }
+      }
+    ]
+  },
+  "name": "Daily Instagram Queue Summary",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 18 * * *",
+      "one_time_date": null,
+      "timezone": "America/New_York",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  }
+}

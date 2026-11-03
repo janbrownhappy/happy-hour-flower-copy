@@ -1,0 +1,107 @@
+{
+  "name": "LocationDiagnosticLog",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Base44 User.id of the authenticated user who sent the location"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "app",
+        "admin_test",
+        "despia"
+      ],
+      "default": "app",
+      "description": "app = production client update; admin_test = admin testing tool; despia = Despia native GPS (Phase 4 field-test history, short retention)"
+    },
+    "client_timestamp": {
+      "type": "string",
+      "description": "Timestamp reported by the device"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "accuracy_meters": {
+      "type": "number",
+      "description": "GPS accuracy reported by the device (meters)"
+    },
+    "speed": {
+      "type": "number",
+      "description": "Device speed m/s (Despia, diagnostic only)"
+    },
+    "heading": {
+      "type": "number",
+      "description": "Course degrees (Despia, diagnostic only)"
+    },
+    "altitude": {
+      "type": "number",
+      "description": "Altitude m (Despia, diagnostic only)"
+    },
+    "search_radius_meters": {
+      "type": "number"
+    },
+    "nearby_count": {
+      "type": "number"
+    },
+    "closest_venue_id": {
+      "type": "string"
+    },
+    "closest_venue_name": {
+      "type": "string"
+    },
+    "closest_distance_meters": {
+      "type": "number"
+    },
+    "arrival_state": {
+      "type": "string",
+      "description": "Phase 3 state of the closest venue visit after this reading"
+    },
+    "notification_eligible": {
+      "type": "boolean"
+    },
+    "suppression_reason": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "rejected",
+        "error"
+      ]
+    },
+    "error": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

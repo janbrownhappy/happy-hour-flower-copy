@@ -1,0 +1,41 @@
+{
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create",
+        "update",
+        "delete"
+      ],
+      "entity_name": "VenueCollaborator"
+    }
+  },
+  "description": "When a venue collaborator is added or removed, refresh who can edit its pass designs",
+  "name": "Sync Pass Managers on Collaborator Change",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "sync_pass_managers_collab",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_managers": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncPassManagers",
+            "args": {
+              "venue_id": "${ .trigger.data.venue_id // .trigger.old_data.venue_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Update pass design access"
+          }
+        }
+      }
+    ]
+  }
+}

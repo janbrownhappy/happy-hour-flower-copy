@@ -1,0 +1,35 @@
+{
+  "name": "MailerLite \u2014 Sync Venues",
+  "description": "Syncs venues to MailerLite when they become active, routing to the mapped group.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create",
+        "update"
+      ],
+      "entity_name": "Venue"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "mailerlite_sync_venues",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncToMailerLite",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

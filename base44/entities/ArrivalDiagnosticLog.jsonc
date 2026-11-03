@@ -1,0 +1,90 @@
+{
+  "name": "ArrivalDiagnosticLog",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "is_test": {
+      "type": "boolean",
+      "default": false
+    },
+    "venue_id": {
+      "type": "string"
+    },
+    "venue_name": {
+      "type": "string"
+    },
+    "stop_id": {
+      "type": "string",
+      "description": "FoodTruckStop id when evaluated at a truck stop"
+    },
+    "visit_id": {
+      "type": "string"
+    },
+    "evaluated_at": {
+      "type": "string"
+    },
+    "distance_meters": {
+      "type": "number"
+    },
+    "accuracy_meters": {
+      "type": "number"
+    },
+    "accuracy_ok": {
+      "type": "boolean"
+    },
+    "previous_state": {
+      "type": "string"
+    },
+    "new_state": {
+      "type": "string"
+    },
+    "qualifying_arrival_readings": {
+      "type": "number"
+    },
+    "qualifying_departure_readings": {
+      "type": "number"
+    },
+    "has_active_special": {
+      "type": "boolean"
+    },
+    "notification_eligible": {
+      "type": "boolean"
+    },
+    "suppression_reason": {
+      "type": "string"
+    },
+    "notification_event_id": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

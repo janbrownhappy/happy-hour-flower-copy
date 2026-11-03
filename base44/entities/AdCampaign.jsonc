@@ -1,0 +1,166 @@
+{
+  "name": "AdCampaign",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) that purchased this ad"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of submission (denormalized for display)"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the venue owner who submitted the ad"
+    },
+    "owner_email": {
+      "type": "string",
+      "description": "Owner email at time of submission (denormalized for emails)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Internal campaign title / label"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Uploaded ad creative image URL"
+    },
+    "click_url": {
+      "type": "string",
+      "description": "Optional click-through destination URL for the ad"
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "weekday",
+        "weekend"
+      ],
+      "description": "Pricing tier: weekday or weekend placement"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "First day the ad campaign runs (YYYY-MM-DD)"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Last day the ad campaign runs (YYYY-MM-DD)"
+    },
+    "price_paid": {
+      "type": "number",
+      "description": "Amount paid (snapshot of the tier price at purchase time, in USD)"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "unpaid",
+        "paid"
+      ],
+      "default": "unpaid",
+      "description": "Whether the Stripe one-time purchase succeeded"
+    },
+    "stripe_session_id": {
+      "type": "string",
+      "description": "Stripe Checkout session id for this purchase"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "draft",
+      "description": "Lifecycle: draft (not paid), pending (paid, awaiting review), approved (live in rotation), rejected"
+    },
+    "paid_at": {
+      "type": "string",
+      "description": "ISO timestamp when payment succeeded"
+    },
+    "approved_at": {
+      "type": "string",
+      "description": "ISO timestamp when an admin approved the ad"
+    },
+    "rejected_at": {
+      "type": "string",
+      "description": "ISO timestamp when an admin rejected the ad"
+    },
+    "admin_note": {
+      "type": "string",
+      "description": "Internal admin note (e.g. rejection reason)"
+    },
+    "impression_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total times this ad was shown to a consumer"
+    },
+    "click_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total times a consumer clicked this ad"
+    }
+  },
+  "required": [
+    "venue_id",
+    "tier"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "data.status": "approved"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

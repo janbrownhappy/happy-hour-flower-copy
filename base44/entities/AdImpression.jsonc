@@ -1,0 +1,68 @@
+{
+  "name": "AdImpression",
+  "type": "object",
+  "properties": {
+    "ad_campaign_id": {
+      "type": "string",
+      "description": "FK to AdCampaign (Base44 id)"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) \u2014 denormalized for reporting"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the venue owner, denormalized so owners can read their own ad impressions without an unsupported RLS subquery"
+    },
+    "consumer_id": {
+      "type": "string",
+      "description": "Base44 id of the consumer who saw the ad"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "impression",
+        "click"
+      ],
+      "default": "impression",
+      "description": "Whether this was a view or a click"
+    },
+    "shown_at": {
+      "type": "string",
+      "description": "ISO timestamp of the event"
+    }
+  },
+  "required": [
+    "ad_campaign_id",
+    "event_type"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "KpiSourceSync",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "hhf_internal, stripe, partnero, meta, website_analytics"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failed",
+        "not_connected"
+      ]
+    },
+    "last_run_at": {
+      "type": "string"
+    },
+    "last_success_at": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "source"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

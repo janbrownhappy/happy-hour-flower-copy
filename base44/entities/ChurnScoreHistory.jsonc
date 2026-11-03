@@ -1,0 +1,78 @@
+{
+  "name": "ChurnScoreHistory",
+  "type": "object",
+  "properties": {
+    "retention_profile_id": {
+      "type": "string",
+      "description": "FK to RetentionProfile (Base44 id)"
+    },
+    "account_ref_id": {
+      "type": "string",
+      "description": "Base44 id of the scored account (denormalized for per-account trend queries)"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "consumer",
+        "venue"
+      ],
+      "description": "Account type this history point belongs to"
+    },
+    "churn_score": {
+      "type": "number",
+      "default": 0,
+      "description": "Churn score at this point in time (0-100)"
+    },
+    "risk_category": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "watch",
+        "at_risk",
+        "high_risk",
+        "critical"
+      ],
+      "description": "Risk category at this point in time"
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "category_change",
+        "significant_move",
+        "weekly_snapshot",
+        "manual_recalc"
+      ],
+      "description": "Why this history row was written \u2014 kept bounded by only recording meaningful changes plus a weekly snapshot"
+    },
+    "recorded_at": {
+      "type": "string",
+      "description": "ISO timestamp when this history point was recorded"
+    }
+  },
+  "required": [
+    "account_ref_id",
+    "churn_score"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

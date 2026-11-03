@@ -1,0 +1,77 @@
+{
+  "name": "LoyaltyStamp",
+  "type": "object",
+  "properties": {
+    "pass_instance_id": {
+      "type": "string",
+      "description": "FK to PassInstance (Base44 id)"
+    },
+    "wallet_pass_id": {
+      "type": "string",
+      "description": "FK to WalletPass template (Base44 id)"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "Venue owner's user id (denormalized for read access)"
+    },
+    "consumer_name": {
+      "type": "string"
+    },
+    "stamped_by_user_id": {
+      "type": "string",
+      "description": "Staff user who added the stamp"
+    },
+    "points_after": {
+      "type": "number",
+      "description": "Stamp count after this stamp (0 when a reward was earned and the card reset)"
+    },
+    "reward_earned": {
+      "type": "boolean",
+      "default": false
+    },
+    "stamped_at": {
+      "type": "string",
+      "description": "ISO timestamp"
+    }
+  },
+  "required": [
+    "pass_instance_id",
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "data.stamped_by_user_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

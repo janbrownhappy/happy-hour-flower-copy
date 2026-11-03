@@ -1,0 +1,70 @@
+{
+  "name": "LifecycleStatusHistory",
+  "type": "object",
+  "properties": {
+    "consumer_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the free consumer whose lifecycle changed"
+    },
+    "retention_profile_id": {
+      "type": "string",
+      "description": "FK to RetentionProfile (Base44 id)"
+    },
+    "from_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "cooling",
+        "dormant",
+        "churned",
+        "reactivated"
+      ],
+      "description": "Previous lifecycle status (null on the first observation)"
+    },
+    "to_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "cooling",
+        "dormant",
+        "churned",
+        "reactivated"
+      ],
+      "description": "New lifecycle status after this transition"
+    },
+    "days_since_activity": {
+      "type": "number",
+      "description": "Days since last app activity at time of transition"
+    },
+    "transitioned_at": {
+      "type": "string",
+      "description": "ISO timestamp of the lifecycle transition"
+    }
+  },
+  "required": [
+    "consumer_id",
+    "to_status"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

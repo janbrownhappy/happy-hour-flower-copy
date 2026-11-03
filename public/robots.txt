@@ -1,0 +1,31 @@
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+Disallow: /admin
+Disallow: /portal
+Disallow: /onboarding
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /oauth
+Disallow: /auth-check
+Disallow: /profile
+Disallow: /settings
+Disallow: /favorites
+Disallow: /venue-owner
+Disallow: /VenueOwnerHome
+Disallow: /venue-ads
+Disallow: /financial-overview
+Disallow: /action-items
+Disallow: /prd-download
+Disallow: /WalletDesigner
+Disallow: /StaffRedeem
+Disallow: /nfc-unlock
+Disallow: /claim-thank-you
+
+# LLM-friendly site summary: https://happyhourflower.com/llms.txt
+Allow: /llms.txt
+
+Sitemap: https://happyhourflower.com/sitemap.xml
+Sitemap: https://happyhourflower.base44.app/functions/blogSitemap

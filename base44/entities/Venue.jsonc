@@ -1,0 +1,868 @@
+{
+  "name": "Venue",
+  "type": "object",
+  "properties": {
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug"
+    },
+    "name": {
+      "type": "string",
+      "description": "Venue name"
+    },
+    "venue_key": {
+      "type": "string",
+      "description": "Stable scraper-side identifier (e.g. 'hendrix-greenville'). Unique per venue \u2014 the ingestVenue webhook matches on this so a re-scrape updates instead of duplicating."
+    },
+    "brand_id": {
+      "type": "string",
+      "description": "FK to VenueBrand (Base44 id) \u2014 set when this venue belongs to a chain/brand. Nullable; legacy standalone venues leave this empty."
+    },
+    "brand_name": {
+      "type": "string",
+      "description": "Denormalized brand name for fast display on venue cards"
+    },
+    "venue_type_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Base44 ids of VenueType records describing what kind of venue this is (many-to-many). Replaces the legacy free-text category for filtering."
+    },
+    "cuisine_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Base44 ids of Cuisine records describing this venue's cuisines (many-to-many)."
+    },
+    "editor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "User IDs (Base44 id) granted edit access to this venue as a collaborator (regional_manager or editor).",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string",
+      "description": "City name"
+    },
+    "zip_code": {
+      "type": "string",
+      "description": "ZIP / postal code"
+    },
+    "neighborhood": {
+      "type": "string",
+      "description": "Legacy neighborhood code (preserved for traceability / auto-mapping only)"
+    },
+    "area": {
+      "type": "string",
+      "description": "Area stable key (LocationArea.area_id) \u2014 string form for legacy compatibility"
+    },
+    "area_id": {
+      "type": "string",
+      "description": "FK to LocationArea (Base44 id)"
+    },
+    "market_id": {
+      "type": "string",
+      "description": "Parent market key (LocationMarket.market_id) \u2014 denormalized for fast filtering"
+    },
+    "market_name": {
+      "type": "string",
+      "description": "Denormalized market name for fast display/filtering"
+    },
+    "state_code": {
+      "type": "string",
+      "description": "Two-letter state code (SC, GA, FL) \u2014 denormalized for fast filtering"
+    },
+    "state_id": {
+      "type": "string",
+      "description": "FK to LocationState (Base44 id) \u2014 denormalized for fast filtering"
+    },
+    "category": {
+      "type": "string"
+    },
+    "price_level": {
+      "type": "number",
+      "enum": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": "Price level: 1=$ (budget), 2=$$ (moderate), 3=$$$ (upscale), 4=$$$$ (fine dining)"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "has_happy_hour": {
+      "type": "boolean",
+      "description": "Whether this venue is confirmed to run a happy hour. Set by the scraper webhook; an empty scrape never flips this to false."
+    },
+    "happy_hour_windows": {
+      "type": "array",
+      "description": "Scraped happy hour windows exactly as delivered by the scraper \u2014 day list, times, label and area of the venue it applies to.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "days": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "start_time": {
+            "type": "string"
+          },
+          "end_time": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string",
+            "description": "Which part of the venue the window applies to (e.g. 'bar only')"
+          }
+        }
+      }
+    },
+    "specials": {
+      "type": "array",
+      "description": "Scraped happy hour specials exactly as delivered by the scraper.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "description": "'drink' or 'food' as worded by the source"
+          },
+          "price": {
+            "type": "string",
+            "description": "Price as written on the source page (e.g. '$7')"
+          }
+        }
+      }
+    },
+    "amenities_raw": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Amenities in the venue's own wording, straight from the source page. Deliberately NOT mapped onto the app's amenity catalog \u2014 that mapping happens in a separate pass, and mapping here would discard the original wording."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text notes captured by the scraper (e.g. 'Bar seating only')"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "Page the happy hour data was scraped from"
+    },
+    "last_scraped_at": {
+      "type": "string",
+      "description": "ISO timestamp of the most recent scrape delivery for this venue"
+    },
+    "last_scrape_error": {
+      "type": "string",
+      "description": "Error reported by the scraper on its last run. Empty when the last scrape succeeded."
+    },
+    "scrape_status": {
+      "type": "string",
+      "enum": [
+        "scraped",
+        "needs_review"
+      ],
+      "description": "'scraped' = last delivery was clean; 'needs_review' = empty/failed scrape or a protected record a human should compare"
+    },
+    "manual_override": {
+      "type": "boolean",
+      "default": false,
+      "description": "True when this record was corrected by hand. The scraper webhook then never modifies its venue fields."
+    },
+    "truck_schedule": {
+      "type": "array",
+      "description": "Mobile venues (food trucks) only. Date-specific appearances \u2014 one entry per day the truck is out, so a truck can be somewhere different every day. Only entries with confirmed=true are shown publicly on the map / near-me.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Calendar date of this appearance (YYYY-MM-DD)"
+          },
+          "day": {
+            "type": "string",
+            "description": "Day-of-week label derived from date (Mon..Sun) \u2014 display convenience only"
+          },
+          "location_name": {
+            "type": "string",
+            "description": "Where the truck is parked (e.g. 'Birds Fly South Ale Project')"
+          },
+          "address": {
+            "type": "string",
+            "description": "Street address of the parking spot"
+          },
+          "lat": {
+            "type": "number"
+          },
+          "lng": {
+            "type": "number"
+          },
+          "start_time": {
+            "type": "string",
+            "description": "Service start time (e.g. '5:00 PM')"
+          },
+          "end_time": {
+            "type": "string",
+            "description": "Service end time (e.g. '9:00 PM')"
+          },
+          "source": {
+            "type": "string",
+            "description": "Where this appearance came from: '864foodtrucks' (pre-populated from the weekly feed) or 'owner' (entered/edited by the venue owner)"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "default": false,
+            "description": "True once the owner has confirmed this date/time. Unconfirmed appearances are never shown to consumers."
+          }
+        }
+      }
+    },
+    "schedule_pending_confirmation": {
+      "type": "boolean",
+      "default": false,
+      "description": "True when pre-populated truck appearances are waiting for owner confirmation. Drives the weekly confirmation email."
+    },
+    "schedule_confirmed_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the owner last confirmed their truck schedule"
+    },
+    "schedule_changed_at": {
+      "type": "string",
+      "description": "ISO timestamp of the owner's last truck schedule edit \u2014 used to re-notify them for review after a mid-week change"
+    },
+    "schedule_notified_at": {
+      "type": "string",
+      "description": "ISO timestamp of the last truck schedule confirmation/review email sent to the owner"
+    },
+    "w3w_address": {
+      "type": "string",
+      "description": "what3words address marking the venue's precise location"
+    },
+    "geofence_radius_meters": {
+      "type": "number",
+      "default": 100,
+      "description": "Radius in meters for the broad GPS geofence that triggers arrival 'Welcome' notifications"
+    },
+    "geofence_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether GPS geofence arrival detection is active for this venue"
+    },
+    "geofence_addon_status": {
+      "type": "string",
+      "enum": [
+        "inactive",
+        "pending_setup",
+        "active",
+        "past_due",
+        "canceled"
+      ],
+      "default": "inactive",
+      "description": "Lifecycle of the paid Beacon & Geofencing add-on (Platinum only)",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "geofence_addon_expires_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the current geofence add-on billing period ends",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "geofence_addon_billing_cycle": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "annual"
+      ],
+      "description": "Billing cadence of the active geofence add-on subscription",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "geofence_setup_fee_paid": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the one-time $249.90 beacon/geofence setup fee has been paid",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "geofence_setup_fee_paid_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the one-time setup fee was paid",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "phone": {
+      "type": "string",
+      "description": "Venue phone number"
+    },
+    "website": {
+      "type": "string",
+      "description": "Venue website URL"
+    },
+    "contacts_verified": {
+      "type": "boolean",
+      "default": false,
+      "description": "True only when this venue's address, phone and website have been confirmed against an authoritative source (Google Places) or by an admin."
+    },
+    "contacts_verified_at": {
+      "type": "string",
+      "description": "ISO timestamp of the last successful contact verification"
+    },
+    "contacts_verified_source": {
+      "type": "string",
+      "description": "How the contact details were verified (e.g. 'google_places', 'admin_manual', 'owner_confirmed')"
+    },
+    "full_enrichment_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the bulk full-profile AI enrichment sweep last processed this venue. Venues with this set are skipped when the sweep resumes."
+    },
+    "field_provenance": {
+      "type": "object",
+      "description": "Sparse map of field key -> source that last set it (venue_owner, hhf_admin, google_places, gemini_web_research, automated_enrichment, other_external_source; future scrapfly_*). venue_owner / hhf_admin values are protected from automated enrichment. A missing key means provenance unknown (historical)."
+    },
+    "facebook_url": {
+      "type": "string",
+      "description": "Facebook page URL"
+    },
+    "instagram_url": {
+      "type": "string",
+      "description": "Instagram profile URL"
+    },
+    "tiktok_url": {
+      "type": "string",
+      "description": "TikTok profile URL"
+    },
+    "threads_url": {
+      "type": "string",
+      "description": "Threads profile URL"
+    },
+    "youtube_url": {
+      "type": "string",
+      "description": "YouTube channel URL"
+    },
+    "x_url": {
+      "type": "string",
+      "description": "X (Twitter) profile URL"
+    },
+    "reservation_policy": {
+      "type": "string",
+      "enum": [
+        "none",
+        "accepted",
+        "required"
+      ],
+      "default": "none",
+      "description": "Reservation policy"
+    },
+    "happy_hour_start": {
+      "type": "string"
+    },
+    "happy_hour_end": {
+      "type": "string"
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "day_schedules": {
+      "type": "object",
+      "description": "Per-day happy hour times"
+    },
+    "deals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Global fallback deals (legacy)"
+    },
+    "deals_by_day": {
+      "type": "object",
+      "description": "Per-day deals"
+    },
+    "premium_deals_by_day": {
+      "type": "object",
+      "description": "Per-day map of premium-exclusive deal indices"
+    },
+    "photo_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "photo_thumbs": {
+      "type": "object",
+      "description": "Map of full photo URL -> 400px WebP thumbnail URL, generated on upload. Used for list cards and map pins; the full URL is used on the venue detail page."
+    },
+    "photo_provenance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Parallel to photo_urls: the source of each photo (venue_owner, hhf_admin, google_places, other_external_source...). Owner/admin photos are never replaced or reordered by the auto photo fetcher. Empty entry = unknown (historical)."
+    },
+    "photo_needs_manual": {
+      "type": "boolean",
+      "default": false,
+      "description": "True when the auto-fetcher found no real photo (Google, website, social) and assigned the HHF branded placeholder. Cleared when an admin uploads a real photo."
+    },
+    "photo_fetch_reason": {
+      "type": "string",
+      "description": "Why the last auto photo fetch could not find a real photo"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "review_count": {
+      "type": "number"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_new": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_fan_favorite": {
+      "type": "boolean",
+      "default": false
+    },
+    "distance": {
+      "type": "number"
+    },
+    "owner_id": {
+      "type": "string",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "pending",
+        "draft"
+      ],
+      "default": "active"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "unclaimed",
+        "pending_approval",
+        "verified"
+      ],
+      "default": "unclaimed",
+      "description": "Ownership verification status"
+    },
+    "description": {
+      "type": "string"
+    },
+    "subscription_tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "premium",
+        "platinum"
+      ],
+      "default": "free",
+      "description": "Venue subscription tier controlling feature access"
+    },
+    "billing_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "past_due",
+        "canceled"
+      ],
+      "default": "active",
+      "description": "Billing health of the venue's paid subscription",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "billing_status_updated_at": {
+      "type": "string",
+      "description": "ISO timestamp of when billing_status last changed",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0
+    },
+    "favorite_count": {
+      "type": "number",
+      "default": 0
+    },
+    "partnero_partner_id": {
+      "type": "string",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "partnero_referral_link": {
+      "type": "string",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            },
+            {
+              "user_condition": {
+                "email": "jan.brown@happyhourflower.com"
+              }
+            },
+            {
+              "data.owner_id": "{{user.id}}"
+            },
+            {
+              "data.editor_ids": "{{user.id}}"
+            }
+          ]
+        }
+      }
+    },
+    "momentum_email_sent_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the last review-momentum nudge email was sent to the owner"
+    },
+    "competitor_alert_sent_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the last competitor-deal alert email was sent to this venue's owner"
+    },
+    "health_score": {
+      "type": "number",
+      "description": "Profile completeness score 0-100, computed by scoreVenueHealth"
+    },
+    "health_nudge_sent_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the last low-health-score nudge email was sent to the owner"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        },
+        {
+          "data.status": "active"
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.editor_ids": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "data.editor_ids": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

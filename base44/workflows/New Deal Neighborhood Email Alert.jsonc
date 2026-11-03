@@ -1,0 +1,34 @@
+{
+  "name": "New Deal Neighborhood Email Alert",
+  "description": "Emails users when a venue in their saved neighborhood adds a new happy hour deal.",
+  "trigger": {
+    "condition": "${ ((.trigger.changed_fields | index(\"deals\") != null) or (.trigger.changed_fields | index(\"deals_by_day\") != null)) }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "update"
+      ],
+      "entity_name": "Venue"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "new_deal_neighborhood_email_alert",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyNewDealInNeighborhood",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

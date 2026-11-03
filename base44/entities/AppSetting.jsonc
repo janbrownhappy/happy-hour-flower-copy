@@ -1,0 +1,80 @@
+{
+  "name": "AppSetting",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Unique setting key (e.g. revenuecat_test_mode)"
+    },
+    "value_bool": {
+      "type": "boolean",
+      "default": false,
+      "description": "Boolean setting value"
+    },
+    "value_string": {
+      "type": "string",
+      "description": "String setting value"
+    }
+  },
+  "required": [
+    "key"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    }
+  }
+}

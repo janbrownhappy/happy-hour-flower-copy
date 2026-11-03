@@ -1,0 +1,65 @@
+{
+  "name": "LocalQuestion",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "The question the user is asking the local community"
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Display name of the person who asked (denormalized for display)"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "Optional FK to Venue (Base44 id) \u2014 set when the question is tagged to a specific venue"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of posting (denormalized for display)"
+    },
+    "answer_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of answers this question has received (denormalized for feed display)"
+    },
+    "is_hidden": {
+      "type": "boolean",
+      "default": false,
+      "description": "Set true by an admin to hide a reported/inappropriate question from the feed"
+    }
+  },
+  "required": [
+    "text"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {},
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

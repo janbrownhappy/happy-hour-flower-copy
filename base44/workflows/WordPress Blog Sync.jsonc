@@ -1,0 +1,45 @@
+{
+  "name": "WordPress Blog Sync",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "*/15 * * * *",
+      "one_time_date": null,
+      "timezone": "America/New_York",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "description": "Every 15 minutes, imports new and updated published posts from blog.happyhourflower.com into the app's blog (read-only, one-way).",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "wordpress_blog_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_posts": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncWordPressPosts",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Sync WordPress posts",
+            "description": "Create or update articles"
+          }
+        }
+      }
+    ]
+  }
+}

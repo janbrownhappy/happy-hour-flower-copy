@@ -1,0 +1,127 @@
+{
+  "name": "NewsArticle",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "excerpt": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "venue": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "archived"
+      ],
+      "default": "draft"
+    },
+    "author": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "state_code": {
+      "type": "string",
+      "description": "Two-letter state code (SC, GA, FL). Empty = applies to all states (global)."
+    },
+    "state_name": {
+      "type": "string",
+      "description": "State name (denormalized for display)"
+    },
+    "market_id": {
+      "type": "string",
+      "description": "Market key (LocationMarket.market_id). Empty = applies to all markets in the state."
+    },
+    "market_name": {
+      "type": "string",
+      "description": "Market name (denormalized for display)"
+    },
+    "area_id": {
+      "type": "string",
+      "description": "Area key (LocationArea.area_id). Empty = applies to all areas in the market."
+    },
+    "area_name": {
+      "type": "string",
+      "description": "Area name (denormalized for display)"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        },
+        {
+          "data.status": "published"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    }
+  }
+}

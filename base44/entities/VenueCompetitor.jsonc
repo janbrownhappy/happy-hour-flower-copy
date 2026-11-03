@@ -1,0 +1,87 @@
+{
+  "name": "VenueCompetitor",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to the owner's Venue (Base44 id)"
+    },
+    "competitor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Base44 ids of up to 4 selected competitor venues (legacy id-based selection)"
+    },
+    "competitors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Competitor name as typed by the owner"
+          },
+          "matched_venue_id": {
+            "type": "string",
+            "description": "Base44 Venue id this name matched to, if any"
+          }
+        }
+      },
+      "description": "Up to 4 competitors entered by name; matched_venue_id is set when the name matches an existing venue"
+    }
+  },
+  "required": [
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

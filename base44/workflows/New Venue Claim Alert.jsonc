@@ -1,0 +1,34 @@
+{
+  "name": "New Venue Claim Alert",
+  "description": "Emails the admin whenever a venue owner submits a claim on the claim page.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "VenueClaimRequest"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "new_venue_claim_alert",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyNewVenueClaim",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

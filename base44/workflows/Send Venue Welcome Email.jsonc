@@ -1,0 +1,34 @@
+{
+  "name": "Send Venue Welcome Email",
+  "description": "Sends a welcome email to the venue owner the moment their venue is created.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Venue"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_venue_welcome_email",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendVenueWelcome",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

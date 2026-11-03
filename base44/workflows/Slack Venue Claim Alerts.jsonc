@@ -1,0 +1,43 @@
+{
+  "name": "Slack Venue Claim Alerts",
+  "description": "Posts new venue claims and claim status changes to Slack",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "entity_name": "VenueClaimRequest",
+      "events": [
+        "create",
+        "update"
+      ]
+    },
+    "condition": "${ .trigger.event_type == \"create\" or (.trigger.data.status != .trigger.old_data.status) }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "slack_venue_claim_alerts",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "post_slack": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifySlack",
+            "args": {
+              "category": "claims",
+              "event": "${ if .trigger.event_type == \"create\" then \"claim_created\" else \"claim_status\" end }",
+              "data": "${ .trigger.data }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Post to Slack",
+            "description": "Venue claims channel"
+          }
+        }
+      }
+    ]
+  }
+}

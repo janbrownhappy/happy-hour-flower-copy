@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "happy-hour-flower",
+      "type": "skill-md",
+      "description": "How to find happy hour deals, venues, local guides and articles on Happy Hour Flower (Greenville, SC), and how to connect to its sign-in-protected MCP server.",
+      "url": "https://happyhourflower.com/.well-known/agent-skills/happy-hour-flower/SKILL.md",
+      "digest": "sha256:53c7fc8699ebc5bdfbd7873707cfca9a769c25c43c4cfc40faf504595aa07f2e"
+    }
+  ]
+}

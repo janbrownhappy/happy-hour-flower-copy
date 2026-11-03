@@ -1,0 +1,2 @@
+// HHF branded placeholder used when no real venue photo can be found.
+export const VENUE_PHOTO_PLACEHOLDER = 'https://media.base44.com/images/public/6a1f45eb9cf7513caebbab49/2dfa69582_generated_image.png';

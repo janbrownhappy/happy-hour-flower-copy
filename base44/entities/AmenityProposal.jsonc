@@ -1,0 +1,70 @@
+{
+  "name": "AmenityProposal",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) \u2014 the venue this amenity was observed on"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Denormalized venue name for fast display in the review queue"
+    },
+    "label": {
+      "type": "string",
+      "description": "The proposed amenity label suggested by the research pass (e.g. 'Silent disco')"
+    },
+    "suggested_slug": {
+      "type": "string",
+      "description": "Machine-friendly slug derived from the label, ready to be added to the amenity catalog on approval"
+    },
+    "suggested_category": {
+      "type": "string",
+      "description": "Which existing amenity category this proposal would best fit under"
+    },
+    "source": {
+      "type": "string",
+      "description": "Cited evidence for the proposed amenity. Required \u2014 a proposal with no source is not accepted."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending",
+      "description": "pending = awaiting admin review; approved = queued for addition to the amenity catalog; rejected = dismissed"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "description": "ISO timestamp of when an admin approved or rejected this proposal"
+    }
+  },
+  "required": [
+    "label",
+    "source"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

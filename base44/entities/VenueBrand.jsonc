@@ -1,0 +1,65 @@
+{
+  "name": "VenueBrand",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Brand / chain name (e.g. 'Eggs Up Grill')"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Optional brand logo URL"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the corporate owner who controls this brand and its locations"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

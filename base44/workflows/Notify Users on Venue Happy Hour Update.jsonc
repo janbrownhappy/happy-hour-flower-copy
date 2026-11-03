@@ -1,0 +1,34 @@
+{
+  "name": "Notify Users on Venue Happy Hour Update",
+  "description": "",
+  "trigger": {
+    "condition": "${ ((.trigger.changed_fields | index(\"happy_hour_start\") != null) or (.trigger.changed_fields | index(\"happy_hour_end\") != null) or (.trigger.changed_fields | index(\"days\") != null) or (.trigger.changed_fields | index(\"deals\") != null)) }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "update"
+      ],
+      "entity_name": "Venue"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "notify_users_on_venue_happy_hour_update",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyFavoriteVenueUpdate",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

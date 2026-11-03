@@ -1,0 +1,43 @@
+{
+  "name": "GitHub Push to Changelog",
+  "description": "When code is pushed to the main branch on GitHub, turn the commits into plain-English changelog entries.",
+  "trigger": {
+    "config": {
+      "trigger_type": "webhook",
+      "webhook_id": "6accaa234d879911600a872c",
+      "webhook_name": "github-repository-events",
+      "events": [
+        "push"
+      ]
+    },
+    "condition": "${ (.trigger.data.ref // \"\") == \"refs/heads/main\" and ((.trigger.data.commits // []) | length) > 0 }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "github_push_to_changelog",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "log_commits": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "logGithubPushToChangelog",
+            "args": {
+              "repository": "${ .trigger.data.repository.full_name }",
+              "ref": "${ .trigger.data.ref }",
+              "commits": "${ .trigger.data.commits }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Write changelog entries",
+            "description": "From pushed commits"
+          }
+        }
+      }
+    ]
+  }
+}

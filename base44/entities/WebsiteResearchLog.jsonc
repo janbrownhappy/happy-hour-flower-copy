@@ -1,0 +1,102 @@
+{
+  "name": "WebsiteResearchLog",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "venue_name": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "string",
+      "description": "Which enrichment process ran the research"
+    },
+    "status": {
+      "type": "string",
+      "description": "OFFICIAL_WEBSITE_CONFIRMED, OFFICIAL_WEBSITE_UNCERTAIN, NO_WEBSITE, INVALID_URL, WEBSITE_IS_SOCIAL_PROFILE, SCRAPE_FAILED, NO_USEFUL_CONTENT, NOT_CONFIGURED"
+    },
+    "attempted": {
+      "type": "boolean"
+    },
+    "official_website": {
+      "type": "string"
+    },
+    "pages_fetched": {
+      "type": "number"
+    },
+    "urls_fetched": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pages_skipped": {
+      "type": "number"
+    },
+    "pdf_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rendered_count": {
+      "type": "number",
+      "description": "Pages that needed JavaScript rendering"
+    },
+    "requests": {
+      "type": "number",
+      "description": "Scrapfly API requests made (incl. retries)"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_pages": {
+      "type": "number"
+    },
+    "multi_location": {
+      "type": "boolean"
+    },
+    "social_links": {
+      "type": "object"
+    },
+    "validation": {
+      "type": "object"
+    },
+    "duration_ms": {
+      "type": "number"
+    },
+    "researched_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

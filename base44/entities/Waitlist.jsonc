@@ -1,0 +1,79 @@
+{
+  "name": "Waitlist",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "First name"
+    },
+    "last_name": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Last name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 254,
+      "description": "Email address"
+    },
+    "phone": {
+      "type": "string",
+      "pattern": "^[0-9+()\\-. ]{0,20}$",
+      "description": "Mobile phone number (optional, for SMS)"
+    },
+    "zip_code": {
+      "type": "string",
+      "pattern": "^([0-9]{5}(-[0-9]{4})?)?$",
+      "description": "ZIP code"
+    },
+    "source": {
+      "type": "string",
+      "maxLength": 100,
+      "default": "landing_page",
+      "description": "Where the signup came from"
+    },
+    "email_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "User checked the email marketing consent checkbox"
+    },
+    "sms_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "User checked the SMS marketing consent checkbox"
+    },
+    "submitted_at": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "ISO timestamp of form submission (date + time)"
+    },
+    "ip_address": {
+      "type": "string",
+      "maxLength": 45,
+      "description": "IP address of the user at time of submission"
+    }
+  },
+  "required": [
+    "email"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

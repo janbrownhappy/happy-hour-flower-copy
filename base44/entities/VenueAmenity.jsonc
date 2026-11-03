@@ -1,0 +1,76 @@
+{
+  "name": "VenueAmenity",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to venue (Base44 id)"
+    },
+    "amenity_slug": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "description": "Cited evidence for why this amenity is tagged on this venue (e.g. 'Google Places attributes', 'Official Website: \"Dogs welcome on our patio\"'). Multiple sources are joined with ' | '. Empty for amenities selected manually by an owner/admin."
+    },
+    "source_url": {
+      "type": "string",
+      "description": "URL of the page the evidence came from, when available (e.g. the official website page)"
+    },
+    "confidence": {
+      "type": "number",
+      "description": "0-1 strength of the supporting evidence, when the research produced one"
+    },
+    "provenance": {
+      "type": "string",
+      "description": "Who/what set this amenity: venue_owner, hhf_admin, scrapfly_official_website, google_places, gemini_web_research, automated_enrichment, other_external_source. venue_owner and hhf_admin rows are protected from automated enrichment. Empty = historical row with unknown provenance."
+    },
+    "verified_at": {
+      "type": "string",
+      "description": "ISO timestamp of when this amenity was confirmed against its cited source"
+    }
+  },
+  "required": [
+    "venue_id",
+    "amenity_slug"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "read": null,
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

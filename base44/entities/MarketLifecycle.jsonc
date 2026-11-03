@@ -1,0 +1,85 @@
+{
+  "name": "MarketLifecycle",
+  "type": "object",
+  "properties": {
+    "market_id": {
+      "type": "string",
+      "description": "LocationMarket.market_id"
+    },
+    "stage": {
+      "type": "string",
+      "description": "Launch stage (e.g. planned, soft_launch, launched, mature)"
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this stage began"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "market_id",
+    "stage",
+    "effective_date"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    }
+  }
+}

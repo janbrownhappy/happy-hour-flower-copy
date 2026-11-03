@@ -1,0 +1,1582 @@
+{
+ "before": {
+  "6ab14ba35ee3c79aa3646e16": {
+   "facebook_url": "https://www.facebook.com/CrownePlazaGreenvilleSC",
+   "instagram_url": "",
+   "x_url": "",
+   "tiktok_url": "",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6a1f49eba193b5028183c577": {
+   "facebook_url": "",
+   "instagram_url": "",
+   "x_url": "",
+   "tiktok_url": "",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6aae9d76d1705d8752d25697": {
+   "facebook_url": "https://www.facebook.com/willytacofeedandseed",
+   "instagram_url": "",
+   "x_url": "",
+   "tiktok_url": "",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6aae9dc707ab1e152740a8ed": {
+   "facebook_url": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+   "instagram_url": "https://www.instagram.com/brewsonmain/",
+   "x_url": "",
+   "tiktok_url": "",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6aae9cf3e62fa7c3f3f3e93d": {
+   "facebook_url": "https://www.facebook.com/BadDaddysMcdanielVillage/",
+   "instagram_url": "https://www.instagram.com/baddaddysburger/",
+   "x_url": "",
+   "tiktok_url": "https://www.tiktok.com/@baddaddysburger",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6a1f49eba193b5028183c570": {
+   "facebook_url": "https://www.facebook.com/MatadorRestaurants",
+   "instagram_url": "http://instagram.com/matador_restaurants",
+   "x_url": "",
+   "tiktok_url": "",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6a1f49eba193b5028183c5a0": {
+   "facebook_url": "https://www.facebook.com/firebirdsgrill/",
+   "instagram_url": "https://www.instagram.com/firebirdsgrill/",
+   "x_url": "https://x.com/firebirdsgrill",
+   "tiktok_url": "https://www.tiktok.com/@firebirdsgrill",
+   "youtube_url": "https://www.youtube.com/@firebirdsgrill",
+   "threads_url": "https://www.threads.net/@firebirdsgrill"
+  },
+  "6a1f49eba193b5028183c5ad": {
+   "facebook_url": "https://www.facebook.com/LewisBBQ",
+   "instagram_url": "https://www.instagram.com/lewisbarbecue",
+   "x_url": "",
+   "tiktok_url": "",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6aae9d0565af8bb8c97bb7a2": {
+   "facebook_url": "https://www.facebook.com/DoubleDogsGreenville",
+   "instagram_url": "https://www.instagram.com/doubledogsrestaurant",
+   "x_url": "",
+   "tiktok_url": "https://www.tiktok.com/@doubledogsrestaurant",
+   "youtube_url": "",
+   "threads_url": ""
+  },
+  "6aae9d0ca2cb263d010dde54": {
+   "facebook_url": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+   "instagram_url": "",
+   "x_url": "https://twitter.com/BellacinosInc",
+   "tiktok_url": "",
+   "youtube_url": "",
+   "threads_url": ""
+  }
+ },
+ "out": [
+  {
+   "venue_id": "6ab14ba35ee3c79aa3646e16",
+   "venue_name": "Crowne Plaza Hotel",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": [
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/CrownePlazaGreenvilleSC",
+     "url": "https://www.facebook.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://www.instagram.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://x.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://instagram.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail/events-facilities",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://instagram.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail/events-facilities",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/content/us/en/groups-and-events",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://instagram.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/content/us/en/groups-and-events",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/content/us/en/locations",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://instagram.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/content/us/en/locations",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/content/us/en/deals/hotel-offers",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://instagram.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/content/us/en/deals/hotel-offers",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/stay-mgmt/ManageYourStay",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://instagram.com/crowneplaza",
+     "page": "https://www.ihg.com/crowneplaza/hotels/us/en/stay-mgmt/ManageYourStay",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/CrownePlazaGreenvilleSC",
+     "url": "https://www.facebook.com/ihghotels",
+     "page": "https://www.ihg.com/content/us/en/about/brands",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/IHGhotels",
+     "page": "https://www.ihg.com/content/us/en/about/brands",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://www.instagram.com/ihghotels",
+     "page": "https://www.ihg.com/content/us/en/about/brands",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/CrownePlazaGreenvilleSC",
+     "url": "https://www.facebook.com/ihghotels",
+     "page": "https://www.ihg.com/content/us/en/customer-care/contact-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "",
+     "url": "https://twitter.com/IHGhotels",
+     "page": "https://www.ihg.com/content/us/en/customer-care/contact-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://www.instagram.com/ihghotels",
+     "page": "https://www.ihg.com/content/us/en/customer-care/contact-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "BLOCK",
+     "reason": "not the selected candidate for this field"
+    }
+   ]
+  },
+  {
+   "venue_id": "6a1f49eba193b5028183c577",
+   "venue_name": "Coral",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": [
+    {
+     "platform": "facebook_url",
+     "existing": "",
+     "url": "https://www.facebook.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://www.instagram.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "",
+     "url": "https://www.facebook.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/menu/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://www.instagram.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/menu/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "",
+     "url": "https://www.facebook.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/contact/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://www.instagram.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/contact/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "",
+     "url": "https://www.facebook.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/about/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "",
+     "url": "https://www.instagram.com/coralgreenville",
+     "page": "https://www.coralgreenville.com/about/",
+     "context": "GLOBAL_HEADER",
+     "account": "UNCERTAIN",
+     "action": "REVIEW",
+     "reason": "SOCIAL_LOCATION_UNCERTAIN"
+    }
+   ]
+  },
+  {
+   "venue_id": "6aae9d76d1705d8752d25697",
+   "venue_name": "Willy Taco",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": [
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacoboilingsprings",
+     "page": "https://www.willytaco.com/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacofeedandseed",
+     "page": "https://www.willytaco.com/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/WillyTaco",
+     "page": "https://www.willytaco.com/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacoboilingsprings",
+     "page": "https://www.willytaco.com/private-events",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacofeedandseed",
+     "page": "https://www.willytaco.com/private-events",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/WillyTaco",
+     "page": "https://www.willytaco.com/private-events",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/WillyTaco",
+     "page": "https://www.willytaco.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacofeedandseed",
+     "page": "https://www.willytaco.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacoboilingsprings",
+     "page": "https://www.willytaco.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacoeasley",
+     "page": "https://www.willytaco.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacoboilingsprings",
+     "page": "https://www.willytaco.com/contact7",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/willytacofeedandseed",
+     "page": "https://www.willytaco.com/contact7",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/willytacofeedandseed",
+     "url": "https://www.facebook.com/WillyTaco",
+     "page": "https://www.willytaco.com/contact7",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    }
+   ]
+  },
+  {
+   "venue_id": "6aae9dc707ab1e152740a8ed",
+   "venue_name": "BREWS on Main",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": [
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BREWS-on-Main-1478143782311932",
+     "page": "https://www.brewssc.com/",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brewsonmain",
+     "page": "https://www.brewssc.com/",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BrewsontheAlley",
+     "page": "https://www.brewssc.com/",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brews_on_the_alley",
+     "page": "https://www.brewssc.com/",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/Brewsatthesquare",
+     "page": "https://www.brewssc.com/",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BREWS-on-Main-1478143782311932",
+     "page": "https://www.brewssc.com/faq",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brewsonmain",
+     "page": "https://www.brewssc.com/faq",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BrewsontheAlley",
+     "page": "https://www.brewssc.com/faq",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brews_on_the_alley",
+     "page": "https://www.brewssc.com/faq",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/Brewsatthesquare",
+     "page": "https://www.brewssc.com/faq",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BREWS-on-Main-1478143782311932",
+     "page": "https://www.brewssc.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brewsonmain",
+     "page": "https://www.brewssc.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BrewsontheAlley",
+     "page": "https://www.brewssc.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brews_on_the_alley",
+     "page": "https://www.brewssc.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/Brewsatthesquare",
+     "page": "https://www.brewssc.com/locations",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BREWS-on-Main-1478143782311932",
+     "page": "https://www.brewssc.com/about-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brewsonmain",
+     "page": "https://www.brewssc.com/about-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BrewsontheAlley",
+     "page": "https://www.brewssc.com/about-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brews_on_the_alley",
+     "page": "https://www.brewssc.com/about-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/Brewsatthesquare",
+     "page": "https://www.brewssc.com/about-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BREWS-on-Main-1478143782311932",
+     "page": "https://www.brewssc.com/contact-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brewsonmain",
+     "page": "https://www.brewssc.com/contact-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/BrewsontheAlley",
+     "page": "https://www.brewssc.com/contact-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/brewsonmain/",
+     "url": "https://www.instagram.com/brews_on_the_alley",
+     "page": "https://www.brewssc.com/contact-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BREWS-on-Main-1478143782311932/",
+     "url": "https://www.facebook.com/Brewsatthesquare",
+     "page": "https://www.brewssc.com/contact-us",
+     "context": "OTHER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    }
+   ]
+  },
+  {
+   "venue_id": "6aae9cf3e62fa7c3f3f3e93d",
+   "venue_name": "Bad Daddy's Burger Bar",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": []
+  },
+  {
+   "venue_id": "6a1f49eba193b5028183c570",
+   "venue_name": "Matador",
+   "website_status": "OFFICIAL_WEBSITE_UNCERTAIN",
+   "location_structure": null,
+   "applied": [],
+   "rows": []
+  },
+  {
+   "venue_id": "6a1f49eba193b5028183c5a0",
+   "venue_name": "Firebirds Wood Fired Grill",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": [
+    {
+     "platform": "x_url",
+     "existing": "https://x.com/firebirdsgrill",
+     "url": "https://twitter.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/firebirdsgrill/",
+     "url": "https://www.facebook.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "youtube_url",
+     "existing": "https://www.youtube.com/@firebirdsgrill",
+     "url": "https://www.youtube.com/channel/UC0H4uY3B3ecjT4mqtve8idg",
+     "page": "https://firebirdsrestaurants.com/greenville",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/firebirdsgrill/",
+     "url": "https://www.instagram.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "x_url",
+     "existing": "https://x.com/firebirdsgrill",
+     "url": "https://twitter.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville/menu",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/firebirdsgrill/",
+     "url": "https://www.facebook.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville/menu",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "youtube_url",
+     "existing": "https://www.youtube.com/@firebirdsgrill",
+     "url": "https://www.youtube.com/channel/UC0H4uY3B3ecjT4mqtve8idg",
+     "page": "https://firebirdsrestaurants.com/greenville/menu",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/firebirdsgrill/",
+     "url": "https://www.instagram.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville/menu",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "x_url",
+     "existing": "https://x.com/firebirdsgrill",
+     "url": "https://twitter.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville/menu/firebar",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/firebirdsgrill/",
+     "url": "https://www.facebook.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville/menu/firebar",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "youtube_url",
+     "existing": "https://www.youtube.com/@firebirdsgrill",
+     "url": "https://www.youtube.com/channel/UC0H4uY3B3ecjT4mqtve8idg",
+     "page": "https://firebirdsrestaurants.com/greenville/menu/firebar",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/firebirdsgrill/",
+     "url": "https://www.instagram.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/greenville/menu/firebar",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "x_url",
+     "existing": "https://x.com/firebirdsgrill",
+     "url": "https://twitter.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/locations",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/firebirdsgrill/",
+     "url": "https://www.facebook.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/locations",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "youtube_url",
+     "existing": "https://www.youtube.com/@firebirdsgrill",
+     "url": "https://www.youtube.com/channel/UC0H4uY3B3ecjT4mqtve8idg",
+     "page": "https://firebirdsrestaurants.com/locations",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/firebirdsgrill/",
+     "url": "https://www.instagram.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/locations",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "x_url",
+     "existing": "https://x.com/firebirdsgrill",
+     "url": "https://twitter.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/contact-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/firebirdsgrill/",
+     "url": "https://www.facebook.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/contact-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "youtube_url",
+     "existing": "https://www.youtube.com/@firebirdsgrill",
+     "url": "https://www.youtube.com/channel/UC0H4uY3B3ecjT4mqtve8idg",
+     "page": "https://firebirdsrestaurants.com/contact-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/firebirdsgrill/",
+     "url": "https://www.instagram.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/contact-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "x_url",
+     "existing": "https://x.com/firebirdsgrill",
+     "url": "https://twitter.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/about-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/firebirdsgrill/",
+     "url": "https://www.facebook.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/about-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "youtube_url",
+     "existing": "https://www.youtube.com/@firebirdsgrill",
+     "url": "https://www.youtube.com/channel/UC0H4uY3B3ecjT4mqtve8idg",
+     "page": "https://firebirdsrestaurants.com/about-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/firebirdsgrill/",
+     "url": "https://www.instagram.com/firebirdsgrill",
+     "page": "https://firebirdsrestaurants.com/about-us",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    }
+   ]
+  },
+  {
+   "venue_id": "6a1f49eba193b5028183c5ad",
+   "venue_name": "Lewis Barbecue",
+   "website_status": "OFFICIAL_WEBSITE_UNCERTAIN",
+   "location_structure": null,
+   "applied": [],
+   "rows": []
+  },
+  {
+   "venue_id": "6aae9d0565af8bb8c97bb7a2",
+   "venue_name": "Double Dogs",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": [
+    {
+     "platform": "tiktok_url",
+     "existing": "https://www.tiktok.com/@doubledogsrestaurant",
+     "url": "https://www.tiktok.com/@doubledogsrestaurant",
+     "page": "https://doubledogs.biz/location/greenville/",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/location/greenville/",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsGreenville",
+     "page": "https://doubledogs.biz/location/greenville/",
+     "context": "LOCATION_CONTENT",
+     "account": "LOCAL",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/location/greenville/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/greenville/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/greenville/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/bowling-green/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/bowling-green/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/gallatin/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/gallatin/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/knoxville-hardin-valley/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/knoxville-hardin-valley/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/knoxville-kingston-pike/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/knoxville-kingston-pike/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/lexington/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/lexington/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/DoubleDogsGreenville",
+     "url": "https://www.facebook.com/DoubleDogsRestaurant",
+     "page": "https://doubledogs.biz/menu/louisville-middletown/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "instagram_url",
+     "existing": "https://www.instagram.com/doubledogsrestaurant",
+     "url": "https://www.instagram.com/doubledogsrestaurant",
+     "page": "https://doubledogs.biz/menu/louisville-middletown/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    }
+   ]
+  },
+  {
+   "venue_id": "6aae9d0ca2cb263d010dde54",
+   "venue_name": "Bellacino's Pizza & Grinders",
+   "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+   "location_structure": "MULTI_LOCATION_CONFIRMED",
+   "applied": [],
+   "rows": [
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+     "url": "https://www.facebook.com/1392792524169574",
+     "page": "https://locations.bellacinos.com/ll/us/sc/simpsonville/331-Harrison-Bridge-Rd/",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+     "url": "https://www.facebook.com/BellacinosPizzaandGrinders",
+     "page": "https://locations.bellacinos.com/ll/us/sc/simpsonville/331-Harrison-Bridge-Rd/",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "x_url",
+     "existing": "https://twitter.com/BellacinosInc",
+     "url": "https://twitter.com/BellacinosInc",
+     "page": "https://locations.bellacinos.com/ll/us/sc/simpsonville/331-Harrison-Bridge-Rd/",
+     "context": "LOCATION_CONTENT",
+     "account": "UNCERTAIN",
+     "action": "RETAIN_EXISTING",
+     "reason": "REGRESSION_PROTECTION (existing value kept)"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+     "url": "https://www.facebook.com/BellacinosPizzaandGrinders",
+     "page": "https://locations.bellacinos.com/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+     "url": "https://www.facebook.com/BellacinosPizzaandGrinders",
+     "page": "https://locations.bellacinos.com/site-map/us/sc/simpsonville/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+     "url": "https://www.facebook.com/BellacinosPizzaandGrinders",
+     "page": "https://locations.bellacinos.com/site-map/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+     "url": "https://www.facebook.com/BellacinosPizzaandGrinders",
+     "page": "https://locations.bellacinos.com/site-map/us/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    },
+    {
+     "platform": "facebook_url",
+     "existing": "https://www.facebook.com/BellacinosSimpsonvilleHarrisonBridgeRd/",
+     "url": "https://www.facebook.com/BellacinosPizzaandGrinders",
+     "page": "https://locations.bellacinos.com/site-map/us/sc/",
+     "context": "GLOBAL_FOOTER",
+     "account": "CORPORATE",
+     "action": "RETAIN_EXISTING",
+     "reason": "not the selected candidate for this field"
+    }
+   ]
+  }
+ ],
+ "crowne_retest": {
+  "venue_id": "6ab14ba35ee3c79aa3646e16",
+  "venue_name": "Crowne Plaza Hotel",
+  "website_status": "OFFICIAL_WEBSITE_CONFIRMED",
+  "location_structure": "MULTI_LOCATION_CONFIRMED",
+  "applied": [],
+  "rows": [
+   {
+    "platform": "facebook_url",
+    "existing": "https://www.facebook.com/CrownePlazaGreenvilleSC",
+    "url": "https://www.facebook.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+    "context": "LOCATION_CONTENT",
+    "account": "CORPORATE",
+    "action": "RETAIN_EXISTING",
+    "reason": "REGRESSION_PROTECTION (existing value kept)"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://www.instagram.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+    "context": "LOCATION_CONTENT",
+    "account": "CORPORATE",
+    "action": "REVIEW",
+    "reason": "BRAND_LEVEL_SOCIAL"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://x.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+    "context": "LOCATION_CONTENT",
+    "account": "CORPORATE",
+    "action": "REVIEW",
+    "reason": "BRAND_LEVEL_SOCIAL"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://instagram.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-US-_-GSPRM",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail/events-facilities",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://instagram.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/greenville/gsprm/hoteldetail/events-facilities",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/content/us/en/groups-and-events",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://instagram.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/content/us/en/groups-and-events",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/content/us/en/locations",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://instagram.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/content/us/en/locations",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/content/us/en/deals/hotel-offers",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://instagram.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/content/us/en/deals/hotel-offers",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/stay-mgmt/ManageYourStay",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://instagram.com/crowneplaza",
+    "page": "https://www.ihg.com/crowneplaza/hotels/us/en/stay-mgmt/ManageYourStay",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "facebook_url",
+    "existing": "https://www.facebook.com/CrownePlazaGreenvilleSC",
+    "url": "https://www.facebook.com/ihghotels",
+    "page": "https://www.ihg.com/content/us/en/about/brands",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "RETAIN_EXISTING",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/IHGhotels",
+    "page": "https://www.ihg.com/content/us/en/about/brands",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://www.instagram.com/ihghotels",
+    "page": "https://www.ihg.com/content/us/en/about/brands",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "facebook_url",
+    "existing": "https://www.facebook.com/CrownePlazaGreenvilleSC",
+    "url": "https://www.facebook.com/ihghotels",
+    "page": "https://www.ihg.com/content/us/en/customer-care/contact-us",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "RETAIN_EXISTING",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "x_url",
+    "existing": "",
+    "url": "https://twitter.com/IHGhotels",
+    "page": "https://www.ihg.com/content/us/en/customer-care/contact-us",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   },
+   {
+    "platform": "instagram_url",
+    "existing": "",
+    "url": "https://www.instagram.com/ihghotels",
+    "page": "https://www.ihg.com/content/us/en/customer-care/contact-us",
+    "context": "GLOBAL_FOOTER",
+    "account": "CORPORATE",
+    "action": "BLOCK",
+    "reason": "not the selected candidate for this field"
+   }
+  ]
+ }
+}

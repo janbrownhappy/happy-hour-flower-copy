@@ -1,0 +1,34 @@
+{
+  "name": "Issue Resolution Notification",
+  "description": "Emails the reporter when an admin marks their listing issue as resolved or dismissed.",
+  "trigger": {
+    "condition": "${ ((.trigger.changed_fields | index(\"status\") != null) and (.trigger.data.status == \"resolved\" or .trigger.data.status == \"dismissed\")) }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "update"
+      ],
+      "entity_name": "ListingIssue"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "issue_resolution_notification",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyIssueResolved",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

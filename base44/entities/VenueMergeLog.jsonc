@@ -1,0 +1,105 @@
+{
+  "name": "VenueMergeLog",
+  "type": "object",
+  "properties": {
+    "canonical_venue_id": {
+      "type": "string"
+    },
+    "retired_venue_id": {
+      "type": "string"
+    },
+    "canonical_name": {
+      "type": "string"
+    },
+    "retired_name": {
+      "type": "string"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "identity_evidence": {
+      "type": "string"
+    },
+    "canonical_reason": {
+      "type": "string"
+    },
+    "fields_transferred": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "amenities_transferred": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deals_transferred": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "photos_transferred": {
+      "type": "number"
+    },
+    "relationships_transferred": {
+      "type": "object",
+      "description": "entity name -> count of records repointed"
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "coordinates_selected": {
+      "type": "string"
+    },
+    "coordinate_source": {
+      "type": "string"
+    },
+    "pre_merge_snapshot": {
+      "type": "object",
+      "description": "Full copies of both Venue records plus every linked record id, for recovery"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "merged",
+        "reverted"
+      ],
+      "default": "merged"
+    },
+    "merged_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "canonical_venue_id",
+    "retired_venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

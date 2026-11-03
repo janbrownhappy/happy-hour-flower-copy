@@ -1,0 +1,164 @@
+{
+  "name": "Profile",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "description": "User's date of birth (YYYY-MM-DD), collected at registration for legal age-verification (alcohol content)"
+    },
+    "role": {
+      "type": "string"
+    },
+    "is_premium": {
+      "type": "boolean",
+      "default": false
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "notif_push": {
+      "type": "boolean",
+      "default": true
+    },
+    "notif_sms": {
+      "type": "boolean",
+      "default": false
+    },
+    "notif_new_deals": {
+      "type": "boolean",
+      "default": true
+    },
+    "notif_areas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Area stable keys (LocationArea.area_id) the user wants deal notifications for"
+    },
+    "location_services_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user has enabled device location services for distance & nearby features"
+    },
+    "arrival_alerts_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Arrival Alerts: allows the native (Despia) app to run background location for venue-arrival detection. Separate from marketing notification preferences."
+    },
+    "subscription_tier": {
+      "type": "string"
+    },
+    "subscription_status": {
+      "type": "string"
+    },
+    "subscription_expires_at": {
+      "type": "string"
+    },
+    "location_preferences": {
+      "type": "object",
+      "description": "User's saved territory preferences",
+      "properties": {
+        "state": {
+          "type": "string",
+          "description": "State name (e.g. Florida)"
+        },
+        "state_code": {
+          "type": "string",
+          "description": "Two-letter state code (SC, GA, FL)"
+        },
+        "state_id": {
+          "type": "string",
+          "description": "FK to LocationState (Base44 id)"
+        },
+        "market": {
+          "type": "string",
+          "description": "Market name (e.g. Greenville / Upstate)"
+        },
+        "market_id": {
+          "type": "string",
+          "description": "Parent market key (LocationMarket.market_id)"
+        },
+        "market_name": {
+          "type": "string",
+          "description": "Denormalized market name"
+        },
+        "city": {
+          "type": "string",
+          "description": "City name"
+        },
+        "zip_code": {
+          "type": "string"
+        },
+        "area": {
+          "type": "string",
+          "description": "The auto-matched or user-selected area key (LocationArea.area_id)"
+        },
+        "area_id": {
+          "type": "string",
+          "description": "FK to LocationArea (Base44 id)"
+        },
+        "last_updated": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

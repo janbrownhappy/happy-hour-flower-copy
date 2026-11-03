@@ -1,0 +1,34 @@
+{
+  "name": "Send Review Notification Email",
+  "description": "",
+  "trigger": {
+    "condition": "${ (.trigger.data.status == \"approved\") }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Review"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_review_notification_email",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyNewReview",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

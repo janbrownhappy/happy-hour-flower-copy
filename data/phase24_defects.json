@@ -1,0 +1,136 @@
+{
+ "recorded_at": "2026-10-03T16:25:38.439Z",
+ "restore": [
+  {
+   "n": "Crowne Plaza Hotel",
+   "id": "6ab14ba35ee3c79aa3646e16",
+   "f": "instagram_url",
+   "before": "",
+   "after": "https://www.instagram.com/crowneplaza",
+   "struct": "MULTI_LOCATION_CONFIRMED",
+   "defect": "D1"
+  },
+  {
+   "n": "Crowne Plaza Hotel",
+   "id": "6ab14ba35ee3c79aa3646e16",
+   "f": "x_url",
+   "before": "",
+   "after": "https://x.com/crowneplaza",
+   "struct": "MULTI_LOCATION_CONFIRMED",
+   "defect": "D1"
+  },
+  {
+   "n": "Charleston Sports Pub",
+   "id": "6ab15b50eab58258f3a43593",
+   "f": "category",
+   "before": "Sports Bar",
+   "after": "Bar",
+   "defect": "D2"
+  },
+  {
+   "n": "Cazbah",
+   "id": "6a1f49eba193b5028183c55c",
+   "f": "category",
+   "before": "Bar & Restaurant",
+   "after": "Wine Bar",
+   "defect": "D2"
+  },
+  {
+   "n": "Chef 21",
+   "id": "6a1f49eba193b5028183c55d",
+   "f": "category",
+   "before": "Bar & Restaurant",
+   "after": "Restaurant",
+   "defect": "D2"
+  },
+  {
+   "n": "Chicora Alley",
+   "id": "6a1f49eba193b5028183c55e",
+   "f": "category",
+   "before": "Bar & Restaurant",
+   "after": "Restaurant",
+   "defect": "D2"
+  },
+  {
+   "n": "521 BBQ & Grill (Lancaster)",
+   "id": "6ab166b3b774cc4caf690804",
+   "f": "category",
+   "before": "Restaurant",
+   "after": "Bar",
+   "defect": "D2"
+  },
+  {
+   "n": "Chuy's",
+   "id": "6a1f49eca193b5028183c5b3",
+   "f": "category",
+   "before": "Latin & Mexican",
+   "after": "Restaurant",
+   "defect": "D2"
+  },
+  {
+   "n": "Coral",
+   "id": "6a1f49eba193b5028183c577",
+   "f": "facebook_url",
+   "before": "",
+   "after": "https://www.facebook.com/coralgreenville",
+   "struct": "MULTI_LOCATION_CONFIRMED",
+   "defect": "D1"
+  },
+  {
+   "n": "Coral",
+   "id": "6a1f49eba193b5028183c577",
+   "f": "instagram_url",
+   "before": "",
+   "after": "https://www.instagram.com/coralgreenville",
+   "struct": "MULTI_LOCATION_CONFIRMED",
+   "defect": "D1"
+  },
+  {
+   "n": "Coral",
+   "id": "6a1f49eba193b5028183c577",
+   "f": "category",
+   "before": "Bar & Restaurant",
+   "after": "Restaurant",
+   "defect": "D2"
+  }
+ ],
+ "retest1": {
+  "result": "FAILED — instagram/x still auto-saved via quoted (non-linked) path",
+  "restored_again": true
+ },
+ "retest2": {
+  "after": [
+   [
+    "Crowne Plaza Hotel",
+    "",
+    "",
+    "https://www.facebook.com/CrownePlazaGreenvilleSC"
+   ],
+   [
+    "Coral",
+    "",
+    null,
+    ""
+   ]
+  ],
+  "gates": [
+   [
+    "Crowne Plaza Hotel",
+    [],
+    [
+     "facebook_url:review:THIRD_PARTY_SOURCE",
+     "instagram_url:review:AMBIGUOUS_LOCATION (social link from a multi-location site may be brand-level)",
+     "x_url:review:AMBIGUOUS_LOCATION (social link from a multi-location site may be brand-level)"
+    ]
+   ],
+   [
+    "Coral",
+    [],
+    [
+     "facebook_url:review:AMBIGUOUS_LOCATION (social link from a multi-location site may be brand-level)",
+     "instagram_url:review:AMBIGUOUS_LOCATION (social link from a multi-location site may be brand-level)"
+    ]
+   ]
+  ]
+ }
+}

@@ -1,0 +1,45 @@
+{
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "daily_featurebase_changelog_push",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "push_pending": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "pushPendingChangelogToFeaturebase",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Push changelog to Featurebase",
+            "description": "Unsent entries"
+          }
+        }
+      }
+    ]
+  },
+  "description": "Every night at 10:30pm, pushes and publishes all changelog entries not yet sent to Featurebase.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "30 22 * * *",
+      "one_time_date": null,
+      "timezone": "America/New_York",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "name": "Daily Featurebase Changelog Push"
+}

@@ -1,0 +1,122 @@
+{
+  "name": "FieldTestSession",
+  "type": "object",
+  "properties": {
+    "test_session_id": {
+      "type": "string",
+      "description": "Human-readable session id, e.g. FT-20261002-1205"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "description": "ios | android | desktop | other"
+    },
+    "user_agent": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "ended"
+      ],
+      "default": "active"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "ended_at": {
+      "type": "string"
+    },
+    "test_modes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "APP_OPEN, APP_BACKGROUNDED, PHONE_LOCKED, APP_TERMINATED, WALKING, DRIVING"
+    },
+    "test_venue_id": {
+      "type": "string"
+    },
+    "test_venue_name": {
+      "type": "string"
+    },
+    "test_venue_lat": {
+      "type": "number"
+    },
+    "test_venue_lng": {
+      "type": "number"
+    },
+    "despia_location_movement_meters": {
+      "type": "number"
+    },
+    "arrival_radius_meters": {
+      "type": "number"
+    },
+    "departure_radius_meters": {
+      "type": "number"
+    },
+    "required_arrival_readings": {
+      "type": "number"
+    },
+    "max_arrival_accuracy_meters": {
+      "type": "number"
+    },
+    "notification_delivery_status": {
+      "type": "string",
+      "default": "DISABLED \u2014 PHASE 5"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "description": "Session summary statistics (no precise coordinates) generated when the session ends"
+    },
+    "readings_count": {
+      "type": "number"
+    },
+    "readings_inside_radius": {
+      "type": "number"
+    },
+    "arrival_detected": {
+      "type": "boolean"
+    },
+    "arrived_reached": {
+      "type": "boolean"
+    },
+    "possible_missed_arrival": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "user_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

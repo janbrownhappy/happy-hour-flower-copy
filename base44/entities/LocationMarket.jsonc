@@ -1,0 +1,63 @@
+{
+  "name": "LocationMarket",
+  "type": "object",
+  "properties": {
+    "market_id": {
+      "type": "string",
+      "description": "Stable unique key for the market (e.g. 'sc_greenville_upstate')"
+    },
+    "market_name": {
+      "type": "string",
+      "description": "Human-friendly market name (e.g. 'Greenville / Upstate')"
+    },
+    "state_code": {
+      "type": "string",
+      "description": "Two-letter state code (SC, GA, FL)"
+    },
+    "state_name": {
+      "type": "string",
+      "description": "Full state name (e.g. 'South Carolina')"
+    },
+    "state_id": {
+      "type": "string",
+      "description": "FK to LocationState (Base44 id) \u2014 optional denormalized link"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Display order in dropdowns"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this market is live/selectable in the app"
+    },
+    "seo_pages_enabled": {
+      "type": "boolean",
+      "description": "Whether public SEO happy hour landing pages are published for this market. Unset = default (on only for Upstate)."
+    }
+  },
+  "required": [
+    "market_id",
+    "market_name",
+    "state_code"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

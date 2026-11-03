@@ -1,0 +1,45 @@
+{
+  "name": "LocationState",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "State name (e.g. South Carolina)"
+    },
+    "code": {
+      "type": "string",
+      "description": "Two-letter state abbreviation (e.g. SC)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this state is live/selectable in the app"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Display order in dropdowns"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "name": "FoodTruckStop",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) \u2014 the truck's business profile"
+    },
+    "location_name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Optional parking/serving instructions (e.g. 'Behind the brewery')"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "America/New_York",
+      "description": "IANA timezone of the stop location"
+    },
+    "local_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Local serving date (YYYY-MM-DD)"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Local end date (differs from local_date for overnight stops)"
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Local start time HH:MM"
+    },
+    "end_time": {
+      "type": "string",
+      "description": "Local end time HH:MM"
+    },
+    "start_at": {
+      "type": "string",
+      "description": "UTC ISO start timestamp"
+    },
+    "end_at": {
+      "type": "string",
+      "description": "UTC ISO scheduled end timestamp"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "canceled",
+        "finished"
+      ],
+      "default": "scheduled"
+    },
+    "confirmed_at": {
+      "type": "string",
+      "description": "When the owner confirmed this dated stop (not presence)"
+    },
+    "checked_in_at": {
+      "type": "string",
+      "description": "When the owner checked in / started serving at this stop"
+    },
+    "finished_at": {
+      "type": "string",
+      "description": "Actual finish timestamp when ended early"
+    },
+    "finish_reason": {
+      "type": "string",
+      "enum": [
+        "sold_out",
+        "finished_early"
+      ]
+    },
+    "series_id": {
+      "type": "string",
+      "description": "Recurrence series id shared by generated occurrences"
+    },
+    "is_exception": {
+      "type": "boolean",
+      "default": false,
+      "description": "True when this occurrence was edited individually; series-wide edits skip it"
+    },
+    "special_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Base44 ids of existing HappyHourItem specials that apply at this stop"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "Client idempotency key \u2014 prevents duplicate stops from repeated taps"
+    },
+    "created_by_user_id": {
+      "type": "string"
+    },
+    "updated_by_user_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "venue_id",
+    "start_at",
+    "end_at"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

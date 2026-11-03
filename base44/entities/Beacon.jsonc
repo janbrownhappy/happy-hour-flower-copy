@@ -1,0 +1,102 @@
+{
+  "name": "Beacon",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) this beacon is deployed at"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of registration (denormalized for display)"
+    },
+    "beacon_uid": {
+      "type": "string",
+      "description": "Unique hardware identifier of the beacon (Estimote UID / serial number). Used to match beacon_detected proximity events."
+    },
+    "label": {
+      "type": "string",
+      "description": "Friendly label for where the beacon is placed (e.g. 'Front Bar', 'Lobby', 'Exit')"
+    },
+    "zone": {
+      "type": "string",
+      "enum": [
+        "entrance",
+        "bar",
+        "wait_zone",
+        "exit",
+        "other"
+      ],
+      "default": "other",
+      "description": "Placement zone, drives the deployment-tier strategy (entrance/bar = arrival offers, wait_zone = add-on offers, exit = come-back offers)"
+    },
+    "range_yards": {
+      "type": "number",
+      "default": 20,
+      "description": "Approximate trigger range in yards (10-25 typical for BLE)"
+    },
+    "wallet_pass_id": {
+      "type": "string",
+      "description": "FK to the WalletPass coupon template surfaced when this beacon is triggered"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this beacon is live and should fire proximity events"
+    },
+    "last_triggered_at": {
+      "type": "string",
+      "description": "ISO timestamp of the most recent proximity trigger"
+    },
+    "trigger_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Total number of times this beacon has fired a proximity event"
+    }
+  },
+  "required": [
+    "venue_id",
+    "beacon_uid"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

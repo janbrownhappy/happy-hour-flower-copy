@@ -1,0 +1,66 @@
+{
+  "name": "LocalPostReport",
+  "type": "object",
+  "properties": {
+    "post_type": {
+      "type": "string",
+      "enum": [
+        "question",
+        "answer"
+      ],
+      "description": "Whether the reported post is a question or an answer"
+    },
+    "post_id": {
+      "type": "string",
+      "description": "FK to the reported LocalQuestion or LocalAnswer (Base44 id)"
+    },
+    "post_text": {
+      "type": "string",
+      "description": "Snapshot of the reported content at time of report"
+    },
+    "reporter_name": {
+      "type": "string",
+      "description": "Display name of the user who filed the report (denormalized)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "resolved"
+      ],
+      "default": "open",
+      "description": "Whether an admin has actioned this report"
+    }
+  },
+  "required": [
+    "post_type",
+    "post_id"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

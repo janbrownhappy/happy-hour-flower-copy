@@ -1,0 +1,83 @@
+{
+  "name": "AppSession",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Base44 id of the user who opened the app (empty for anonymous/logged-out opens)"
+    },
+    "user_email": {
+      "type": "string",
+      "maxLength": 254,
+      "description": "Email of the user at time of session (denormalized for display)"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "app_open",
+        "login"
+      ],
+      "default": "app_open",
+      "description": "What triggered this session record: an app open or an explicit login"
+    },
+    "started_at": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "ISO timestamp when the session began"
+    },
+    "ended_at": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "ISO timestamp when the session ended (tab closed / backgrounded)"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 86400,
+      "default": 0,
+      "description": "Total time spent in the app for this session, in seconds"
+    },
+    "platform": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "User agent / platform string for the session"
+    }
+  },
+  "required": [
+    "event_type",
+    "started_at"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

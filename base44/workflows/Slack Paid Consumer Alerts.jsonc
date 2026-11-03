@@ -1,0 +1,46 @@
+{
+  "name": "Slack Paid Consumer Alerts",
+  "description": "Posts to Slack when a consumer upgrades to a paid plan",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "entity_name": "Profile",
+      "events": [
+        "update"
+      ]
+    },
+    "condition": "${ .trigger.data.subscription_tier == \"premium\" and .trigger.old_data.subscription_tier != \"premium\" }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "slack_paid_consumer_alerts",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "post_slack": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifySlack",
+            "args": {
+              "category": "paid",
+              "event": "consumer_paid",
+              "data": {
+                "email": "${ .trigger.data.email }",
+                "display_name": "${ .trigger.data.display_name }",
+                "subscription_tier": "${ .trigger.data.subscription_tier }"
+              }
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Post to Slack",
+            "description": "Paid signups channel"
+          }
+        }
+      }
+    ]
+  }
+}

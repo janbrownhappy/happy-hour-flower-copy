@@ -1,0 +1,34 @@
+{
+  "name": "Tag Churned in GHL on Venue Delete",
+  "description": "When a Venue is deleted in the app, tags the matching GoHighLevel contact 'churned' + 'inactive' (without removing it) so marketing can run win-back sequences.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "delete"
+      ],
+      "entity_name": "Venue"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "tag_churned_ghl_venue_delete",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncGHLDelete",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

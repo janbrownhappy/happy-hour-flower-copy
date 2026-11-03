@@ -1,0 +1,35 @@
+{
+  "name": "Review Momentum Nudge",
+  "description": "When a venue gets 3+ approved 5-star reviews in 7 days, emails the owner to capitalize on the momentum.",
+  "trigger": {
+    "condition": "${ ((.trigger.data.status == \"approved\") and (.trigger.data.rating >= 5)) }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create",
+        "update"
+      ],
+      "entity_name": "Review"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "review_momentum_nudge",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyReviewMomentum",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

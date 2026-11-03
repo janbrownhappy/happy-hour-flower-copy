@@ -1,0 +1,34 @@
+{
+  "name": "New Ask a Local Question Alert",
+  "description": "Sends a Gmail alert to the admin whenever a new question is posted in Ask a Local.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "LocalQuestion"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "new_ask_a_local_question_alert",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyNewLocalQuestion",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

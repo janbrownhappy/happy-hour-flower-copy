@@ -1,0 +1,67 @@
+{
+  "name": "LocationArea",
+  "type": "object",
+  "properties": {
+    "area_id": {
+      "type": "string",
+      "description": "Stable unique key for the area (e.g. 'sc_greenville_upstate__downtown_greenville')"
+    },
+    "area_name": {
+      "type": "string",
+      "description": "Human-friendly area name (e.g. 'Downtown Greenville')"
+    },
+    "market_id": {
+      "type": "string",
+      "description": "Parent market key (matches LocationMarket.market_id)"
+    },
+    "market_name": {
+      "type": "string",
+      "description": "Denormalized market name for fast display/filtering"
+    },
+    "state_code": {
+      "type": "string",
+      "description": "Two-letter state code (SC, GA, FL)"
+    },
+    "state_name": {
+      "type": "string",
+      "description": "Full state name (e.g. 'South Carolina')"
+    },
+    "state_id": {
+      "type": "string",
+      "description": "FK to LocationState (Base44 id) \u2014 optional denormalized link"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Display order within its market"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this area is live/selectable in the app"
+    }
+  },
+  "required": [
+    "area_id",
+    "area_name",
+    "market_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

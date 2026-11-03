@@ -1,0 +1,128 @@
+{
+  "name": "WebsiteImportJob",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "Venue website URL to research (may be empty for sheet rows)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "working",
+        "done",
+        "partial",
+        "failed",
+        "skipped"
+      ],
+      "default": "queued"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": false,
+      "description": "Publish newly created venues after successful enrichment"
+    },
+    "prefill": {
+      "type": "object",
+      "description": "Venue fields already known from the source sheet; used instead of website research"
+    },
+    "source_key": {
+      "type": "string",
+      "description": "Stable source id (e.g. SC license number) used to skip re-imports"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "Venue created or updated by this job"
+    },
+    "venue_name": {
+      "type": "string"
+    },
+    "updated_existing": {
+      "type": "boolean",
+      "default": false
+    },
+    "fields_filled": {
+      "type": "number"
+    },
+    "amenities_added": {
+      "type": "number"
+    },
+    "note": {
+      "type": "string",
+      "description": "Failure or skip reason"
+    },
+    "attempts": {
+      "type": "number",
+      "default": 0
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "finished_at": {
+      "type": "string"
+    },
+    "batch_label": {
+      "type": "string",
+      "description": "Which upload this URL came from"
+    }
+  },
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    }
+  }
+}

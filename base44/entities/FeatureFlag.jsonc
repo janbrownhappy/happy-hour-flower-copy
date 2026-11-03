@@ -1,0 +1,63 @@
+{
+  "name": "FeatureFlag",
+  "type": "object",
+  "properties": {
+    "feature_key": {
+      "type": "string",
+      "description": "Unique slug matching a feature in featureTiers.js (e.g. 'advanced-filters')"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-friendly name shown to admins"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short explanation of what this feature does"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "consumer",
+        "venue_premium",
+        "venue_platinum"
+      ],
+      "default": "consumer",
+      "description": "Which feature group this flag belongs to: consumer premium, venue premium tier, or venue platinum tier"
+    },
+    "is_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "When false, this premium feature is globally disabled and treated as unavailable for everyone"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Display order in the admin list"
+    }
+  },
+  "required": [
+    "feature_key"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

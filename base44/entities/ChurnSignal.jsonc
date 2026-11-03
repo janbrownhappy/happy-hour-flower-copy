@@ -1,0 +1,89 @@
+{
+  "name": "ChurnSignal",
+  "type": "object",
+  "properties": {
+    "retention_profile_id": {
+      "type": "string",
+      "description": "FK to RetentionProfile (Base44 id) this signal belongs to"
+    },
+    "account_ref_id": {
+      "type": "string",
+      "description": "Base44 id of the scored account (Profile.id or Venue.id) \u2014 denormalized for fast per-account queries"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "consumer",
+        "venue"
+      ],
+      "description": "Which kind of account this signal was detected on"
+    },
+    "signal_type": {
+      "type": "string",
+      "description": "Stable key of the fired rule (matches ChurnScoringRule.rule_key), e.g. 'payment_failed', 'no_login_14d'"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-readable description of the signal at detection time (denormalized)"
+    },
+    "points": {
+      "type": "number",
+      "default": 0,
+      "description": "Risk points this signal contributed to the churn score when it fired"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium",
+      "description": "Relative severity for dashboard sorting/coloring"
+    },
+    "detected_at": {
+      "type": "string",
+      "description": "ISO timestamp when this signal was most recently detected as active"
+    },
+    "resolved_at": {
+      "type": "string",
+      "description": "ISO timestamp when the signal cleared (condition no longer true). Null while active."
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this signal is currently contributing to the account's score"
+    },
+    "expires_at": {
+      "type": "string",
+      "description": "Optional ISO timestamp after which the signal should be considered stale even if not explicitly resolved"
+    }
+  },
+  "required": [
+    "account_ref_id",
+    "signal_type"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

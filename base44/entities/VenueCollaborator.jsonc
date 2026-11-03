@@ -1,0 +1,86 @@
+{
+  "name": "VenueCollaborator",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to venue (Base44 id)"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "FK to user (Base44 id)"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Email of the collaborator (denormalized for display, since venue owners cannot list users)"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "regional_manager",
+        "editor",
+        "viewer"
+      ],
+      "default": "viewer",
+      "description": "User's role for this venue. regional_manager = full edit across an assigned subset of a brand's venues (same edit rights as editor)."
+    }
+  },
+  "required": [
+    "venue_id",
+    "user_id"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

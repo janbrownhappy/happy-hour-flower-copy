@@ -1,0 +1,64 @@
+{
+  "name": "GHLSyncLog",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "Email of the contact that was synced (upsert key)"
+    },
+    "trigger_key": {
+      "type": "string",
+      "description": "What triggered the sync (e.g. consumer_signup, consumer_premium, venue_active)"
+    },
+    "source_entity": {
+      "type": "string",
+      "description": "Entity that triggered the sync (Profile, Venue, Lead, Waitlist) or 'direct'"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failed",
+        "skipped"
+      ],
+      "description": "Outcome of the GHL sync attempt"
+    },
+    "http_status": {
+      "type": "number",
+      "description": "HTTP status code returned by the GHL webhook"
+    },
+    "detail": {
+      "type": "string",
+      "description": "Human-readable detail or error message"
+    },
+    "payload": {
+      "type": "object",
+      "description": "The payload that was sent to GHL (for debugging)"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

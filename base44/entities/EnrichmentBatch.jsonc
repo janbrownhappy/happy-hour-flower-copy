@@ -1,0 +1,112 @@
+{
+  "name": "EnrichmentBatch",
+  "type": "object",
+  "properties": {
+    "phase_id": {
+      "type": "string"
+    },
+    "batch_number": {
+      "type": "number"
+    },
+    "venue_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "completed_venue_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "failed_venue_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skipped_venue_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "batch_status": {
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "VALIDATING",
+        "COMPLETED",
+        "COMPLETED_WITH_REVIEW_ITEMS",
+        "FAILED",
+        "PAUSED_INFRASTRUCTURE",
+        "STOPPED_BY_SAFETY_RULE",
+        "SKIPPED"
+      ],
+      "default": "QUEUED"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "completion_time": {
+      "type": "string"
+    },
+    "integrity_result": {
+      "type": "string"
+    },
+    "stop_reason": {
+      "type": "string"
+    },
+    "snapshot": {
+      "type": "object",
+      "description": "Before-state of every venue + amenity rows, for rollback"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Per-venue outcome and auto-write audit"
+    },
+    "metrics": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "phase_id",
+    "batch_number"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "name": "ProximityEvent",
+  "type": "object",
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "geofence_enter",
+        "beacon_detected"
+      ],
+      "description": "Which proximity layer fired: broad GPS geofence arrival vs precise BLE beacon detection"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Base44 id of the consumer who triggered the event"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Consumer display name at time of event (denormalized)"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the venue owner, denormalized so owners can read their venue's proximity events without an unsupported RLS subquery"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of event (denormalized)"
+    },
+    "beacon_id": {
+      "type": "string",
+      "description": "FK to Beacon (Base44 id) \u2014 set for beacon_detected events"
+    },
+    "beacon_uid": {
+      "type": "string",
+      "description": "Hardware UID reported by the device for beacon_detected events"
+    },
+    "segment": {
+      "type": "string",
+      "enum": [
+        "newcomer",
+        "regular",
+        "lapsed"
+      ],
+      "description": "Dynamic-coupon segment the user resolved to at trigger time"
+    },
+    "pass_instance_id": {
+      "type": "string",
+      "description": "FK to the PassInstance generated/surfaced by this event, if any"
+    },
+    "wallet_pass_id": {
+      "type": "string",
+      "description": "FK to the WalletPass template that was surfaced, if any"
+    },
+    "action_taken": {
+      "type": "string",
+      "enum": [
+        "welcome_notification",
+        "coupon_surfaced",
+        "no_action"
+      ],
+      "default": "no_action",
+      "description": "What the proximity engine did in response to this event"
+    },
+    "triggered_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the proximity event was processed"
+    }
+  },
+  "required": [
+    "event_type",
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

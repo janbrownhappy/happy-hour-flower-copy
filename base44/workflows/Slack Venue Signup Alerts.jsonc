@@ -1,0 +1,43 @@
+{
+  "name": "Slack Venue Signup Alerts",
+  "description": "Posts new venue signups to the Venue-free or Venue-paid Slack channel based on tier",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "entity_name": "Venue",
+      "events": [
+        "create",
+        "update"
+      ]
+    },
+    "condition": "${ .trigger.event_type == \"create\" or (((.trigger.data.subscription_tier // \"free\") != \"free\") and ((.trigger.old_data.subscription_tier // \"free\") == \"free\")) }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "slack_venue_signup_alerts",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "post_slack": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifySlack",
+            "args": {
+              "category": "${ if ((.trigger.data.subscription_tier // \"free\") == \"free\") then \"venue_free\" else \"venue_paid\" end }",
+              "event": "venue_signup",
+              "data": "${ .trigger.data }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Post to Slack",
+            "description": "Venue-free / Venue-paid channel"
+          }
+        }
+      }
+    ]
+  }
+}

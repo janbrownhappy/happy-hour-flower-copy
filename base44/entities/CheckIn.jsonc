@@ -1,0 +1,80 @@
+{
+  "name": "CheckIn",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Base44 id of the consumer who checked in"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Display name of the consumer at time of check-in"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "Base44 id of the venue checked into"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of check-in (denormalized)"
+    },
+    "note": {
+      "type": "string",
+      "description": "Optional note the consumer added with their check-in"
+    },
+    "shared_with_crew": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this check-in was shared with the user's crew"
+    },
+    "checked_in_at": {
+      "type": "string",
+      "description": "ISO timestamp of the check-in"
+    }
+  },
+  "required": [
+    "user_id",
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

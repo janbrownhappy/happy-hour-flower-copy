@@ -1,0 +1,35 @@
+{
+  "name": "Notify Crew of Shared Check-Ins",
+  "description": "When a premium user shares a check-in with their crew (or updates the plan note), email/SMS their crew members.",
+  "trigger": {
+    "condition": "${ (.trigger.data.shared_with_crew == true) }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create",
+        "update"
+      ],
+      "entity_name": "CheckIn"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "notify_crew_of_shared_check_ins",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyCrewOfCheckIn",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

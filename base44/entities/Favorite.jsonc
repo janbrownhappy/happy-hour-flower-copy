@@ -1,0 +1,34 @@
+{
+  "name": "Favorite",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "venue_id": {
+      "type": "string"
+    },
+    "receive_venue_comms": {
+      "type": "boolean",
+      "default": false,
+      "description": "User has opted in to receive push/SMS communications from this venue"
+    }
+  },
+  "required": [
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

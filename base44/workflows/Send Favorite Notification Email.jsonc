@@ -1,0 +1,34 @@
+{
+  "name": "Send Favorite Notification Email",
+  "description": "",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Favorite"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_favorite_notification_email",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyNewFavorite",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

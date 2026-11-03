@@ -1,0 +1,85 @@
+{
+  "name": "ListingIssue",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of report (denormalized for display)"
+    },
+    "reporter_id": {
+      "type": "string",
+      "description": "FK to the reporting user (Base44 id)"
+    },
+    "reporter_name": {
+      "type": "string",
+      "description": "Name/email of reporter at time of submission"
+    },
+    "issue_type": {
+      "type": "string",
+      "enum": [
+        "incorrect_hours",
+        "wrong_deals",
+        "closed_permanently",
+        "wrong_location",
+        "wrong_contact_info",
+        "other"
+      ],
+      "default": "other",
+      "description": "Category of the reported problem"
+    },
+    "description": {
+      "type": "string",
+      "description": "Free-text details from the reporter"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "in_review",
+        "resolved",
+        "dismissed"
+      ],
+      "default": "open",
+      "description": "Triage status of the report"
+    },
+    "admin_notes": {
+      "type": "string",
+      "description": "Internal notes from the reviewer"
+    }
+  },
+  "required": [
+    "venue_id",
+    "issue_type"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "name": "BlogArticle",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "enum": [
+        "local",
+        "wordpress",
+        "wix"
+      ],
+      "description": "Where this article came from: 'local' = created in-app (AI/manual), 'wordpress' = imported from blog.happyhourflower.com (WordPress is authoritative), 'wix' = legacy import from the retired Wix blog."
+    },
+    "external_post_id": {
+      "type": "string",
+      "description": "Source CMS post ID, disambiguated by `source`. For source=wordpress this is the WordPress numeric post id (the permanent sync key). For source=wix it is the legacy Wix post id. Empty for local articles."
+    },
+    "seobuddy_id": {
+      "type": "number",
+      "description": "SEO Buddy article id \u2014 stable dedupe key for the SEO Buddy webhook (published/updated deliveries upsert on this)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Article headline"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug used at /blog/:slug"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Short summary shown on the listing cards and used as the meta description fallback"
+    },
+    "body_html": {
+      "type": "string",
+      "description": "Full article body as HTML"
+    },
+    "category": {
+      "type": "string",
+      "description": "Primary category name"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tag names"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author display name"
+    },
+    "featured_image_url": {
+      "type": "string",
+      "description": "Featured image URL"
+    },
+    "hero_image_alt": {
+      "type": "string",
+      "description": "Alt text for the featured/hero image"
+    },
+    "infographic_image_url": {
+      "type": "string",
+      "description": "Infographic image URL (stored locally, not hotlinked)"
+    },
+    "faq_schema": {
+      "type": "array",
+      "description": "FAQ structured data pairs",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "language_code": {
+      "type": "string",
+      "description": "ISO language code of this article (e.g. 'en', 'es')"
+    },
+    "source_article_id": {
+      "type": "number",
+      "description": "For translated articles: the SEO Buddy id of the original source article"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "published",
+        "archived"
+      ],
+      "default": "scheduled",
+      "description": "scheduled = not yet live (admin-only visibility); published = live on the public blog; archived = hidden"
+    },
+    "published_at": {
+      "type": "string",
+      "description": "ISO timestamp of the publish date"
+    },
+    "seo_title": {
+      "type": "string",
+      "description": "SEO title tag"
+    },
+    "seo_description": {
+      "type": "string",
+      "description": "SEO meta description"
+    },
+    "seo_keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Target keywords for this article"
+    },
+    "source_keyword": {
+      "type": "string",
+      "description": "The keyword/question this article was generated from"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "The original post URL on the source blog (traceability only)"
+    },
+    "local_edit": {
+      "type": "boolean",
+      "default": false,
+      "description": "True once an admin edited this article in-app. For WordPress articles this does NOT block sync \u2014 WordPress stays authoritative."
+    },
+    "external_last_modified": {
+      "type": "string",
+      "description": "Legacy: source post's last modify time from the Wix sync"
+    },
+    "last_synced_at": {
+      "type": "string",
+      "description": "Legacy: last Wix sync time for this article"
+    },
+    "wordpress_url": {
+      "type": "string",
+      "description": "Public URL of this post on WordPress; used as the canonical URL"
+    },
+    "wordpress_modified_at": {
+      "type": "string",
+      "description": "ISO timestamp (UTC) of WordPress modified_gmt at last import \u2014 compared to detect changes"
+    },
+    "wordpress_published_at": {
+      "type": "string",
+      "description": "ISO timestamp (UTC) of WordPress date_gmt"
+    },
+    "wordpress_sync_status": {
+      "type": "string",
+      "enum": [
+        "synced",
+        "updated",
+        "flagged",
+        "error"
+      ],
+      "description": "synced = imported/unchanged; updated = last sync overwrote it from a newer WordPress version; flagged = no longer published on WordPress, needs admin review; error = last sync of this post failed"
+    },
+    "wordpress_sync_note": {
+      "type": "string",
+      "description": "Reason for a flagged/error sync status"
+    },
+    "wordpress_last_synced_at": {
+      "type": "string",
+      "description": "ISO timestamp of the last sync run that checked this post"
+    },
+    "wordpress_featured_media_id": {
+      "type": "number",
+      "description": "WordPress media id of the featured image last imported \u2014 the image is only re-downloaded when this changes"
+    },
+    "wix_draft_post_id": {
+      "type": "string",
+      "description": "Legacy Wix draft post id (retired Wix blog)"
+    },
+    "wix_post_url": {
+      "type": "string",
+      "description": "Legacy Wix post URL (retired Wix blog)"
+    },
+    "wix_pushed_at": {
+      "type": "string",
+      "description": "Legacy Wix push timestamp (retired Wix blog)"
+    },
+    "wix_push_error": {
+      "type": "string",
+      "description": "Legacy Wix push error (retired Wix blog)"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        },
+        {
+          "data.status": "published"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    }
+  }
+}

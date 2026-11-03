@@ -1,0 +1,87 @@
+{
+  "name": "ActivityLog",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to venue (Base44 id)"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "User who made the change (Base44 id)"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Name of user at time of action"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "created",
+        "updated",
+        "deleted",
+        "settings_changed",
+        "deals_updated",
+        "photos_updated",
+        "amenities_updated",
+        "favorited",
+        "unfavorited",
+        "deal_viewed",
+        "venue_viewed"
+      ],
+      "description": "Type of action performed"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the change"
+    },
+    "changes": {
+      "type": "object",
+      "description": "JSON object with field changes: {field: {old, new}}"
+    }
+  },
+  "required": [
+    "venue_id",
+    "user_id",
+    "action"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "name": "VenueClaimRequest",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "FK to Venue (Base44 id). Empty for portal 'add a business' requests where the venue does not exist yet."
+    },
+    "venue_name": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Venue name at time of claim (denormalized)"
+    },
+    "user_id": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "FK to User (Base44 id) \u2014 the claimant. Empty for anonymous public-portal submissions (linked by an admin at approval time)."
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "app",
+        "portal"
+      ],
+      "default": "app",
+      "description": "Where the request originated: 'app' (logged-in in-app claim) or 'portal' (public venue claim portal)."
+    },
+    "request_type": {
+      "type": "string",
+      "enum": [
+        "claim",
+        "add"
+      ],
+      "default": "claim",
+      "description": "'claim' = claiming an existing venue; 'add' = submitting a new business that isn't listed yet."
+    },
+    "proposed_address": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "For 'add' requests: the business street address proposed by the submitter."
+    },
+    "proposed_city": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "For 'add' requests: the business city proposed by the submitter."
+    },
+    "proposed_category": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "For 'add' requests: the business category proposed by the submitter."
+    },
+    "proposed_phone": {
+      "type": "string",
+      "pattern": "^[0-9+()\\-. ]{0,20}$",
+      "description": "For 'add' requests: the business phone proposed by the submitter."
+    },
+    "claimant_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 150,
+      "description": "Full name of the person claiming"
+    },
+    "claimant_email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 254,
+      "description": "Email of the claimant"
+    },
+    "claimant_phone": {
+      "type": "string",
+      "pattern": "^[0-9+()\\-. ]{0,20}$",
+      "description": "Phone number of the claimant"
+    },
+    "relationship": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "general_manager",
+        "marketing_manager",
+        "authorized_representative",
+        "other"
+      ],
+      "description": "Claimant's relationship to the venue"
+    },
+    "relationship_details": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Additional details about the relationship"
+    },
+    "proof_url": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "URL of uploaded proof document or image"
+    },
+    "proof_token": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "One-time random code that authorizes a proof upload for this claim (cleared after upload)"
+    },
+    "proof_requested_at": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "ISO timestamp of when an admin last emailed the claimant asking for proof"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending"
+    },
+    "admin_notes": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Internal notes from the reviewer"
+    },
+    "reviewed_by": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "User ID of the admin who reviewed the claim"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "ISO timestamp of when it was reviewed"
+    },
+    "onboarding_nudge_sent_at": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "ISO timestamp of when the stalled-onboarding reminder email was sent"
+    }
+  },
+  "required": [
+    "claimant_name",
+    "claimant_email"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        },
+        {
+          "data.status": "pending"
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    }
+  }
+}

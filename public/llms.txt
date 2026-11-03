@@ -1,0 +1,33 @@
+# Happy Hour Flower
+
+> Find your happy place - FAST. Happy Hour Flower is a local discovery app for happy hour deals, drink and food specials, events and food trucks, starting in Greenville, SC. Consumers browse verified specials by neighborhood, day and time; venue owners claim and manage their listings, post deals and reach nearby fans.
+
+## Main pages
+
+- [Home](https://happyhourflower.com/): Overview of the app for consumers and venues
+- [For consumers](https://happyhourflower.com/site/consumers): How people find happy hours and specials near them
+- [For venues](https://happyhourflower.com/site/venues): How bars and restaurants promote their happy hours
+- [List your happy hour](https://happyhourflower.com/site/venues/list-your-happy-hour): Add or claim a venue listing
+- [Happy Hour Flower vs Yelp and Google Maps](https://happyhourflower.com/site/happy-hour-flower-vs-yelp-google-maps): Comparison with other discovery apps
+- [Greenville neighborhoods](https://happyhourflower.com/greenville-neighborhoods): Greenville, SC areas covered
+
+## Pricing
+
+- [Pricing](https://happyhourflower.com/site/pricing): Plans overview
+- [Consumer pricing](https://happyhourflower.com/site/pricing/consumers): Free and premium plans for consumers
+- [Venue pricing](https://happyhourflower.com/site/pricing/venues): Free, Premium and Platinum plans for venues
+
+## Local guides
+
+- [Happy hour guides](https://happyhourflower.com/happy-hour): Happy hour landing pages by city, neighborhood and day
+
+## Content
+
+- [Blog](https://happyhourflower.com/blog): Local guides, venue spotlights and happy hour tips
+- [News](https://happyhourflower.com/news): Local food and drink news
+
+## Legal
+
+- [Terms of Service](https://happyhourflower.com/terms)
+- [Privacy Policy](https://happyhourflower.com/privacy)
+- [Cookie Policy](https://happyhourflower.com/cookies)

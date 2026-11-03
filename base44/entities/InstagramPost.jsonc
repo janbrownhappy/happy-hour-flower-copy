@@ -1,0 +1,83 @@
+{
+  "name": "InstagramPost",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) being announced. One record per venue."
+    },
+    "venue_name": {
+      "type": "string"
+    },
+    "venue_city": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "publishing",
+        "posted",
+        "skipped",
+        "failed"
+      ],
+      "default": "pending",
+      "description": "pending = waiting for review; publishing = approved and being posted; posted/skipped/failed = final outcome"
+    },
+    "instagram_media_id": {
+      "type": "string",
+      "description": "Published Instagram media id"
+    },
+    "caption": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "error": {
+      "type": "string",
+      "description": "Why the post failed"
+    },
+    "queued_at": {
+      "type": "string",
+      "description": "ISO timestamp when the venue entered the review queue"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "description": "ISO timestamp of the approve/skip decision"
+    },
+    "reviewed_by": {
+      "type": "string",
+      "description": "Email of the reviewer"
+    },
+    "posted_at": {
+      "type": "string",
+      "description": "ISO timestamp of the publish attempt"
+    }
+  },
+  "required": [
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

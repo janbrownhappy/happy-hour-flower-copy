@@ -1,0 +1,66 @@
+import { lazy as lazyWithRetry } from 'react';
+
+// Admin panels are code-split so the Admin page module itself stays small and
+// only the active tab's panel is fetched. Plain React.lazy on purpose: a failed
+// panel chunk must surface in the tab's error boundary, never reload the page
+// (a reload resets the selected tab back to the dashboard).
+export const AdminVenues = lazyWithRetry(() => import('@/components/admin/AdminVenues'));
+export const AdminQualityReport = lazyWithRetry(() => import('@/components/admin/AdminQualityReport'));
+export const AdminVenueReview = lazyWithRetry(() => import('@/components/admin/AdminVenueReview'));
+export const AdminListings = lazyWithRetry(() => import('@/components/admin/AdminListings'));
+export const AdminNews = lazyWithRetry(() => import('@/components/admin/AdminNews'));
+export const NewsCategoriesAdmin = lazyWithRetry(() => import('@/components/admin/NewsCategoriesAdmin'));
+export const AdminUsers = lazyWithRetry(() => import('@/components/admin/AdminUsers'));
+export const AdminAnalytics = lazyWithRetry(() => import('@/components/admin/AdminAnalytics'));
+export const AppUsageAnalytics = lazyWithRetry(() => import('@/components/admin/AppUsageAnalytics'));
+export const PopularityAnalytics = lazyWithRetry(() => import('@/components/admin/PopularityAnalytics'));
+export const AmenityAnalytics = lazyWithRetry(() => import('@/components/admin/AmenityAnalytics'));
+export const FilterCatalogSetup = lazyWithRetry(() => import('@/components/admin/FilterCatalogSetup'));
+export const AdminReviews = lazyWithRetry(() => import('@/components/admin/AdminReviews'));
+export const AdminReviewsToggle = lazyWithRetry(() => import('@/components/admin/AdminReviewsToggle'));
+export const NeighborhoodEditor = lazyWithRetry(() => import('@/components/admin/NeighborhoodEditor'));
+export const BulkNeighborhoodReassign = lazyWithRetry(() => import('@/components/admin/BulkNeighborhoodReassign'));
+export const AdminInstagramQueue = lazyWithRetry(() => import('@/components/admin/instagram/AdminInstagramQueue'));
+export const CreateVenueFromWebsite = lazyWithRetry(() => import('@/components/admin/CreateVenueFromWebsite'));
+export const BulkVenueImport = lazyWithRetry(() => import('@/components/admin/BulkVenueImport'));
+export const LocationHierarchyEditor = lazyWithRetry(() => import('@/components/admin/LocationHierarchyEditor'));
+export const EmailTemplatesAdmin = lazyWithRetry(() => import('@/components/admin/EmailTemplatesAdmin'));
+export const AdminMessagingLimits = lazyWithRetry(() => import('@/components/admin/AdminMessagingLimits'));
+export const AdminMessageLog = lazyWithRetry(() => import('@/components/admin/AdminMessageLog'));
+export const VenuePerformanceCharts = lazyWithRetry(() => import('@/components/admin/VenuePerformanceCharts'));
+export const AmbassadorLeaderboard = lazyWithRetry(() => import('@/components/admin/AmbassadorLeaderboard'));
+export const AdminVenueClaims = lazyWithRetry(() => import('@/components/admin/AdminVenueClaims'));
+export const SubscriptionGrowth = lazyWithRetry(() => import('@/components/admin/SubscriptionGrowth'));
+export const ResourceLinks = lazyWithRetry(() => import('@/components/admin/ResourceLinks'));
+export const AdminActivityLog = lazyWithRetry(() => import('@/components/admin/AdminActivityLog'));
+export const AdminExpiringDeals = lazyWithRetry(() => import('@/components/admin/AdminExpiringDeals'));
+export const AdminIncompleteVenues = lazyWithRetry(() => import('@/components/admin/AdminIncompleteVenues'));
+export const VenueRevenueTracker = lazyWithRetry(() => import('@/components/admin/VenueRevenueTracker'));
+export const ListingActivityCharts = lazyWithRetry(() => import('@/components/admin/ListingActivityCharts'));
+export const AdminListingIssues = lazyWithRetry(() => import('@/components/admin/AdminListingIssues'));
+export const AppStoreLaunchChecklist = lazyWithRetry(() => import('@/components/admin/AppStoreLaunchChecklist'));
+export const SeoPagesSettings = lazyWithRetry(() => import('@/components/admin/seo/SeoPagesSettings'));
+export const SlackNotificationSettings = lazyWithRetry(() => import('@/components/admin/SlackNotificationSettings'));
+export const DemoAccountsSetup = lazyWithRetry(() => import('@/components/admin/DemoAccountsSetup'));
+export const AdminBillingHealth = lazyWithRetry(() => import('@/components/admin/AdminBillingHealth'));
+export const AdminChurn = lazyWithRetry(() => import('@/components/admin/AdminChurn'));
+export const AdminAttritionWatch = lazyWithRetry(() => import('@/components/admin/AdminAttritionWatch'));
+export const AdminRetention = lazyWithRetry(() => import('@/components/admin/AdminRetention'));
+export const AdminBeacons = lazyWithRetry(() => import('@/components/admin/AdminBeacons'));
+export const AdminAutomations = lazyWithRetry(() => import('@/components/admin/AdminAutomations'));
+export const AdminEmails = lazyWithRetry(() => import('@/components/admin/AdminEmails'));
+export const AdminAdApprovals = lazyWithRetry(() => import('@/components/admin/AdminAdApprovals'));
+export const AdminAdPricing = lazyWithRetry(() => import('@/components/admin/AdminAdPricing'));
+export const AdminAdPerformance = lazyWithRetry(() => import('@/components/admin/AdminAdPerformance'));
+export const AdminHouseAds = lazyWithRetry(() => import('@/components/admin/AdminHouseAds'));
+export const AdminFeatureFlags = lazyWithRetry(() => import('@/components/admin/AdminFeatureFlags'));
+export const AdminVenueOverrides = lazyWithRetry(() => import('@/components/admin/AdminVenueOverrides'));
+export const AdminAskLocal = lazyWithRetry(() => import('@/components/admin/AdminAskLocal'));
+export const VenueDedupePanel = lazyWithRetry(() => import('@/components/admin/dedupe/VenueDedupePanel'));
+export const AdminFoodTruckSchedule = lazyWithRetry(() => import('@/components/admin/foodtruck/AdminFoodTruckSchedule'));
+export const AdminNearbyTester = lazyWithRetry(() => import('@/components/admin/nearby/AdminNearbyTester'));
+export const ExecutiveKpiDashboard = lazyWithRetry(() => import('@/components/admin/kpi/ExecutiveKpiDashboard'));
+export const UnassignedAreaPanel = lazyWithRetry(() => import('@/components/admin/imports/UnassignedAreaPanel'));
+export const ImportReviewPanel = lazyWithRetry(() => import('@/components/admin/imports/ImportReviewPanel'));
+export const MissingPhotosPanel = lazyWithRetry(() => import('@/components/admin/photos/MissingPhotosPanel'));
+export const ScrapeReviewPanel = lazyWithRetry(() => import('@/components/admin/scrape/ScrapeReviewPanel'));

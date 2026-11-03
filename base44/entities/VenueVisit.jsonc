@@ -1,0 +1,105 @@
+{
+  "name": "VenueVisit",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Base44 User.id (or 'test-<adminId>' for admin Arrival Engine test sessions)"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "venue_name": {
+      "type": "string"
+    },
+    "stop_id": {
+      "type": "string",
+      "description": "FK to FoodTruckStop when the visit is at a food truck stop"
+    },
+    "is_test": {
+      "type": "boolean",
+      "default": false
+    },
+    "current_state": {
+      "type": "string",
+      "enum": [
+        "OUTSIDE",
+        "NEARBY",
+        "ARRIVED",
+        "NOTIFIED",
+        "DEPARTED"
+      ],
+      "default": "OUTSIDE"
+    },
+    "first_nearby_at": {
+      "type": "string"
+    },
+    "arrived_at": {
+      "type": "string"
+    },
+    "notified_at": {
+      "type": "string"
+    },
+    "departed_at": {
+      "type": "string"
+    },
+    "last_location_at": {
+      "type": "string"
+    },
+    "qualifying_arrival_readings": {
+      "type": "number",
+      "default": 0
+    },
+    "qualifying_departure_readings": {
+      "type": "number",
+      "default": 0
+    },
+    "last_distance_meters": {
+      "type": "number"
+    },
+    "last_accuracy_meters": {
+      "type": "number"
+    },
+    "notification_eligible": {
+      "type": "boolean",
+      "default": false
+    },
+    "notification_status": {
+      "type": "string",
+      "description": "pending | sent | failed | not_sent_disabled | suppressed"
+    },
+    "notification_suppression_reason": {
+      "type": "string"
+    },
+    "notification_event_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "user_id",
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "ActionItem",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Short title of the action item"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional longer details about the task"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "todo",
+        "doing",
+        "done"
+      ],
+      "default": "todo",
+      "description": "Current status of the action item"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium",
+      "description": "Priority level"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Optional due date (YYYY-MM-DD)"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "name": "ChangelogEntry",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Short summary of the change"
+    },
+    "description": {
+      "type": "string",
+      "description": "Longer detail about what changed"
+    },
+    "change_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the change actually happened (ISO). Used for grouping by day; falls back to created_date when empty."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "feature",
+        "fix",
+        "design",
+        "content",
+        "backend",
+        "other"
+      ],
+      "default": "other",
+      "description": "Type of change"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "manual"
+      ],
+      "default": "manual",
+      "description": "'auto' = logged programmatically during build work; 'manual' = added by an admin in the UI"
+    },
+    "featurebase_post_id": {
+      "type": "string",
+      "description": "Featurebase changelog post id created when this entry was pushed. Used to update instead of duplicating on re-push."
+    },
+    "featurebase_url": {
+      "type": "string",
+      "description": "URL of this entry's changelog post in Featurebase"
+    },
+    "featurebase_pushed_at": {
+      "type": "string",
+      "description": "ISO timestamp of the last successful push to Featurebase"
+    },
+    "featurebase_push_error": {
+      "type": "string",
+      "description": "Error message from the last failed push to Featurebase. Empty when the last push succeeded."
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    }
+  }
+}

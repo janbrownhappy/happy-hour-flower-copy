@@ -1,0 +1,48 @@
+{
+  "name": "ResourceLink",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name/title of the resource"
+    },
+    "url": {
+      "type": "string",
+      "description": "The full URL"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of what the website/service does"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category for grouping (e.g. Payments, Analytics, Email)"
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

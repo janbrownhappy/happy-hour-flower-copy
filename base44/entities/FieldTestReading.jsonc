@@ -1,0 +1,115 @@
+{
+  "name": "FieldTestReading",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "FK to FieldTestSession (Base44 id)"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "reading_at": {
+      "type": "string",
+      "description": "Server receive time (ISO)"
+    },
+    "client_timestamp": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "accuracy_meters": {
+      "type": "number"
+    },
+    "speed": {
+      "type": "number"
+    },
+    "heading": {
+      "type": "number"
+    },
+    "closest_venue_id": {
+      "type": "string"
+    },
+    "closest_venue_name": {
+      "type": "string"
+    },
+    "closest_distance_meters": {
+      "type": "number"
+    },
+    "test_venue_id": {
+      "type": "string"
+    },
+    "test_venue_name": {
+      "type": "string"
+    },
+    "test_venue_distance_meters": {
+      "type": "number"
+    },
+    "target_distance_meters": {
+      "type": "number",
+      "description": "Test venue distance, or closest venue distance when no test venue"
+    },
+    "arrival_radius_meters": {
+      "type": "number"
+    },
+    "inside_arrival_radius": {
+      "type": "boolean"
+    },
+    "accuracy_ok": {
+      "type": "boolean"
+    },
+    "previous_state": {
+      "type": "string"
+    },
+    "new_state": {
+      "type": "string"
+    },
+    "qualifying_arrival_readings": {
+      "type": "number"
+    },
+    "qualifying_departure_readings": {
+      "type": "number"
+    },
+    "notification_eligible": {
+      "type": "boolean"
+    },
+    "suppression_reason": {
+      "type": "string"
+    },
+    "seconds_since_previous": {
+      "type": "number"
+    },
+    "meters_since_previous": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "session_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

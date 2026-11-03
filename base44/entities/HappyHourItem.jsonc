@@ -1,0 +1,113 @@
+{
+  "name": "HappyHourItem",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "item_type": {
+      "type": "string",
+      "enum": [
+        "drink",
+        "food"
+      ],
+      "default": "drink",
+      "description": "Whether this happy hour line item is a drink or a food special"
+    },
+    "item_category": {
+      "type": "string",
+      "enum": [
+        "beer",
+        "wine",
+        "cocktail",
+        "mocktail",
+        "spirits",
+        "shots",
+        "seltzer",
+        "appetizer",
+        "entree",
+        "dessert",
+        "other"
+      ],
+      "default": "other",
+      "description": "Structured category the derived deal filters query against"
+    },
+    "deal_style": {
+      "type": "string",
+      "enum": [
+        "half_price",
+        "dollar_off",
+        "fixed_price",
+        "bogo",
+        "combo",
+        "other"
+      ],
+      "default": "other",
+      "description": "Structured discount style, used by the derived Half-price / BOGO deal filters"
+    },
+    "label": {
+      "type": "string",
+      "description": "The deal text as shown to consumers (e.g. '$5 draft pints')"
+    },
+    "day": {
+      "type": "string",
+      "description": "Day of week this item applies to (Mon..Sun). Empty = applies to every happy hour day."
+    },
+    "price": {
+      "type": "number",
+      "description": "Price in dollars, when a specific price is stated"
+    },
+    "is_premium": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this item is a premium-member-exclusive deal"
+    },
+    "source": {
+      "type": "string",
+      "description": "How this row was created (e.g. 'migration', 'owner', 'admin')"
+    }
+  },
+  "required": [
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "read": {},
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}

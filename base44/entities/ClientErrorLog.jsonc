@@ -1,0 +1,44 @@
+{
+  "name": "ClientErrorLog",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "stack": {
+      "type": "string"
+    },
+    "component_stack": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "user_agent": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "message"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

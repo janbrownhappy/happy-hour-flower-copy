@@ -1,0 +1,104 @@
+{
+  "name": "QrScan",
+  "type": "object",
+  "properties": {
+    "qr_id": {
+      "type": "string"
+    },
+    "qr_campaign_id": {
+      "type": "string",
+      "description": "FK to QrCampaign (Base44 id)"
+    },
+    "short_code": {
+      "type": "string"
+    },
+    "hhf_user_id": {
+      "type": "string",
+      "description": "Base44 User.id when the scanner was logged in; empty if anonymous"
+    },
+    "venue_id": {
+      "type": "string"
+    },
+    "special_id": {
+      "type": "string"
+    },
+    "ambassador_id": {
+      "type": "string"
+    },
+    "market": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "placement": {
+      "type": "string"
+    },
+    "destination_type": {
+      "type": "string"
+    },
+    "destination_id": {
+      "type": "string"
+    },
+    "scanned_at": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Random first-party browser session id (not PII)"
+    },
+    "user_agent_category": {
+      "type": "string",
+      "enum": [
+        "ios",
+        "android",
+        "desktop",
+        "other"
+      ]
+    },
+    "referrer_type": {
+      "type": "string",
+      "enum": [
+        "direct",
+        "internal",
+        "external"
+      ]
+    },
+    "is_rapid_repeat": {
+      "type": "boolean",
+      "default": false,
+      "description": "Same session re-hit the same code within 10s"
+    }
+  },
+  "required": [
+    "short_code"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

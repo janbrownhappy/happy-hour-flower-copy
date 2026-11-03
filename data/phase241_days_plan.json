@@ -1,0 +1,225 @@
+{
+ "total": 736,
+ "scanned": 499,
+ "updates": [
+  {
+   "id": "6a1f49eba193b5028183c555",
+   "name": "Abyss",
+   "before": {
+    "days": [
+     "Monday",
+     "Tuesday",
+     "Wednesday",
+     "Thursday",
+     "Friday",
+     "Saturday"
+    ]
+   },
+   "u": {
+    "days": [
+     "Mon",
+     "Tue",
+     "Wed",
+     "Thu",
+     "Fri",
+     "Sat"
+    ]
+   }
+  },
+  {
+   "id": "6a21add0b9300aeb2c402547",
+   "name": "Pete’s pub",
+   "before": {
+    "days": [
+     "Wednesday"
+    ],
+    "day_schedules": {
+     "Wednesday": {
+      "start": "4:00 pm",
+      "end": "6:00 pm"
+     }
+    }
+   },
+   "u": {
+    "days": [
+     "Wed"
+    ],
+    "day_schedules": {
+     "Wed": {
+      "start": "4:00 pm",
+      "end": "6:00 pm"
+     }
+    }
+   }
+  },
+  {
+   "id": "6a6e4004ab86f45f4312b7f4",
+   "name": "Bullwinkle's Tavern",
+   "before": {
+    "days": [
+     "Monday",
+     "Tuesday",
+     "Wednesday",
+     "Thursday",
+     "Friday"
+    ],
+    "day_schedules": {
+     "Monday": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Tuesday": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Wednesday": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Thursday": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Friday": {
+      "start": "16:00",
+      "end": "18:00"
+     }
+    },
+    "deals_by_day": {
+     "Monday": [
+      "$5 Draft Night — $5.00 draft beers every Monday"
+     ],
+     "Wednesday": [
+      "Trivia Night — weekly trivia"
+     ],
+     "Thursday": [
+      "Music Bingo — weekly music bingo, 7 PM start"
+     ]
+    }
+   },
+   "u": {
+    "days": [
+     "Mon",
+     "Tue",
+     "Wed",
+     "Thu",
+     "Fri"
+    ],
+    "day_schedules": {
+     "Mon": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Tue": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Wed": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Thu": {
+      "start": "16:00",
+      "end": "18:00"
+     },
+     "Fri": {
+      "start": "16:00",
+      "end": "18:00"
+     }
+    },
+    "deals_by_day": {
+     "Mon": [
+      "$5 Draft Night — $5.00 draft beers every Monday"
+     ],
+     "Wed": [
+      "Trivia Night — weekly trivia"
+     ],
+     "Thu": [
+      "Music Bingo — weekly music bingo, 7 PM start"
+     ]
+    }
+   }
+  },
+  {
+   "id": "6a6e476471aaea8f239f323a",
+   "name": "Claudio's Bistro",
+   "before": {
+    "days": [
+     "Monday",
+     "Tuesday",
+     "Wednesday",
+     "Thursday"
+    ]
+   },
+   "u": {
+    "days": [
+     "Mon",
+     "Tue",
+     "Wed",
+     "Thu"
+    ]
+   }
+  },
+  {
+   "id": "6aae9de1bbe20f4070777e6e",
+   "name": "THE Pub for What Ales You",
+   "before": {
+    "days": [
+     "Wednesday"
+    ]
+   },
+   "u": {
+    "days": [
+     "Wed"
+    ]
+   }
+  },
+  {
+   "id": "6ab1622d266a191d41c2627b",
+   "name": "Art Bar",
+   "before": {
+    "days": [
+     "Monday",
+     "Tuesday",
+     "Wednesday",
+     "Thursday",
+     "Friday"
+    ]
+   },
+   "u": {
+    "days": [
+     "Mon",
+     "Tue",
+     "Wed",
+     "Thu",
+     "Fri"
+    ]
+   }
+  },
+  {
+   "id": "6ab1622d266a191d41c2627f",
+   "name": "Bang Back Pinball Lounge",
+   "before": {
+    "days": [
+     "Wednesday"
+    ]
+   },
+   "u": {
+    "days": [
+     "Wed"
+    ]
+   }
+  }
+ ],
+ "itemUpd": [],
+ "invalid": [],
+ "collide": [],
+ "convVals": {
+  "Monday→Mon": 6,
+  "Tuesday→Tue": 5,
+  "Wednesday→Wed": 10,
+  "Thursday→Thu": 6,
+  "Friday→Fri": 4,
+  "Saturday→Sat": 1
+ }
+}

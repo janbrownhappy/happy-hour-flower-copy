@@ -1,0 +1,48 @@
+{
+  "name": "AdPricing",
+  "type": "object",
+  "properties": {
+    "weekday_price": {
+      "type": "number",
+      "default": 49,
+      "description": "Price for a weekday ad placement (USD, one-time)"
+    },
+    "weekend_price": {
+      "type": "number",
+      "default": 99,
+      "description": "Price for a weekend ad placement (USD, one-time)"
+    },
+    "weekday_stripe_price_id": {
+      "type": "string",
+      "description": "Stripe Price id for the weekday placement one-time purchase"
+    },
+    "weekend_stripe_price_id": {
+      "type": "string",
+      "description": "Stripe Price id for the weekend placement one-time purchase"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether ad sales are currently enabled"
+    }
+  },
+  "required": [],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

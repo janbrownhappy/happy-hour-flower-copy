@@ -1,0 +1,49 @@
+{
+  "name": "VenueCommunicationSettings",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "monthly_message_limit": {
+      "type": "number",
+      "default": 20,
+      "description": "Max messages allowed per month"
+    },
+    "messages_sent_this_month": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of messages sent in the current billing month"
+    },
+    "last_reset_date": {
+      "type": "string",
+      "description": "ISO date string of when the monthly counter was last reset (YYYY-MM)"
+    }
+  },
+  "required": [
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

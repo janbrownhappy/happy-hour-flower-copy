@@ -1,0 +1,21 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user",
+        "venue_owner",
+        "venue_staff"
+      ],
+      "default": "user",
+      "description": "User role. venue_staff can only access the pass redemption interface."
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "For venue_staff: the venue they are assigned to (Base44 venue id)"
+    }
+  }
+}

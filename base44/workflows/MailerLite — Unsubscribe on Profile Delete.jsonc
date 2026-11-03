@@ -1,0 +1,34 @@
+{
+  "name": "MailerLite \u2014 Unsubscribe on Profile Delete",
+  "description": "When a consumer profile is deleted in the app, marks the matching MailerLite subscriber as unsubscribed (soft \u2014 never hard-deleted).",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "delete"
+      ],
+      "entity_name": "Profile"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "mailerlite_unsubscribe_on_profile_delete",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "unsubscribeFromMailerLite",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

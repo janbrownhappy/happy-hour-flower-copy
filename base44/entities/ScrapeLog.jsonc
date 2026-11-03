@@ -1,0 +1,57 @@
+{
+  "name": "ScrapeLog",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Scraper run identifier, shared by every venue delivered in the same run"
+    },
+    "venue_key": {
+      "type": "string",
+      "description": "Stable scraper-side identifier of the venue this delivery was for"
+    },
+    "received_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the webhook received this delivery"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "created",
+        "updated",
+        "flagged",
+        "skipped_override"
+      ],
+      "description": "What the webhook did: created a venue, updated it, flagged it for review, or left a hand-corrected record untouched"
+    },
+    "error": {
+      "type": "string",
+      "description": "Error text reported by the scraper for this venue, if any"
+    }
+  },
+  "required": [
+    "venue_key"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

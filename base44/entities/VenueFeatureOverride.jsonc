@@ -1,0 +1,57 @@
+{
+  "name": "VenueFeatureOverride",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) this override applies to"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name at time of override (denormalized for display)"
+    },
+    "feature_key": {
+      "type": "string",
+      "description": "Feature slug from VENUE_TIERS in featureTiers.js (e.g. 'arrival-alerts')"
+    },
+    "is_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Explicit override: true forces this feature ON for the venue, false forces it OFF, regardless of the venue's subscription tier baseline"
+    },
+    "note": {
+      "type": "string",
+      "description": "Optional admin note explaining why this override exists (e.g. '48h trial for weekend event')"
+    },
+    "expires_at": {
+      "type": "string",
+      "description": "Optional ISO timestamp after which this override should be considered inactive"
+    }
+  },
+  "required": [
+    "venue_id",
+    "feature_key"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

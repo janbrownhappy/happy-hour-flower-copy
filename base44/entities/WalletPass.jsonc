@@ -1,0 +1,253 @@
+{
+  "name": "WalletPass",
+  "type": "object",
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "venue_name": {
+      "type": "string",
+      "description": "Venue name (denormalized)"
+    },
+    "creator_user_id": {
+      "type": "string",
+      "description": "User.id of the venue manager who created this design (set server-side by createWalletPass). Informational only; grants no access."
+    },
+    "manager_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "User ids of the venue's current owner, editors and collaborators (kept in sync automatically). Only they (and admins) may edit or delete this design."
+    },
+    "pass_type": {
+      "type": "string",
+      "enum": [
+        "coupon",
+        "loyalty_card"
+      ],
+      "description": "Type of wallet pass"
+    },
+    "title": {
+      "type": "string",
+      "description": "Pass title shown on the card"
+    },
+    "description": {
+      "type": "string",
+      "description": "Offer or program description"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Venue logo image URL"
+    },
+    "background_color": {
+      "type": "string",
+      "default": "#1a1a2e",
+      "description": "Pass background color (hex)"
+    },
+    "label_color": {
+      "type": "string",
+      "default": "#ffffff",
+      "description": "Label text color (hex)"
+    },
+    "foreground_color": {
+      "type": "string",
+      "default": "#f5a623",
+      "description": "Value text color (hex)"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Expiration date for coupons"
+    },
+    "expiration_days": {
+      "type": "number",
+      "description": "Auto-expire X days after issue (alternative to fixed date)"
+    },
+    "discount_value": {
+      "type": "string",
+      "description": "e.g. '20%' or '$5 off' \u2014 displayed on coupon"
+    },
+    "terms": {
+      "type": "string",
+      "description": "Terms and conditions text"
+    },
+    "loyalty_program_name": {
+      "type": "string",
+      "description": "Name of the loyalty program (loyalty cards only)"
+    },
+    "loyalty_points_label": {
+      "type": "string",
+      "default": "Points",
+      "description": "Label for points (e.g. 'Stamps', 'Points', 'Credits')"
+    },
+    "loyalty_max_points": {
+      "type": "number",
+      "default": 10,
+      "description": "Points needed for a reward"
+    },
+    "loyalty_reward_description": {
+      "type": "string",
+      "description": "What the customer gets at max points (e.g. 'Free Drink')"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Template status"
+    },
+    "total_issued": {
+      "type": "number",
+      "default": 0,
+      "description": "Total passes issued from this template"
+    },
+    "total_redeemed": {
+      "type": "number",
+      "default": 0,
+      "description": "Total passes redeemed from this template"
+    },
+    "total_installed": {
+      "type": "number",
+      "default": 0,
+      "description": "Total passes currently installed on a device (synced from PassKit webhooks)"
+    },
+    "apple_pass_type_identifier": {
+      "type": "string",
+      "description": "Apple PassKit pass type identifier (set after Apple credentials are added)"
+    },
+    "apple_team_identifier": {
+      "type": "string",
+      "description": "Apple Team ID (set after Apple credentials are added)"
+    },
+    "passkit_program_id": {
+      "type": "string",
+      "description": "PassKit program/template/offer ID this template maps to (coupon offer ID or loyalty program ID). Falls back to the app-wide PassKit env IDs when empty."
+    },
+    "passkit_tier_id": {
+      "type": "string",
+      "description": "PassKit tier ID for loyalty programs (optional, provider-specific)"
+    },
+    "trigger_beacon_uid": {
+      "type": "string",
+      "description": "Hardware UID of the beacon that surfaces this coupon when detected (the 'hyper-local' link)"
+    },
+    "is_dynamic": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, the proximity engine swaps discount_value/description per user segment using the dynamic_offers map"
+    },
+    "dynamic_offers": {
+      "type": "object",
+      "description": "Per-segment offer overrides for dynamic coupons. Keys: newcomer, regular, lapsed.",
+      "properties": {
+        "newcomer": {
+          "type": "object",
+          "properties": {
+            "discount_value": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "regular": {
+          "type": "object",
+          "properties": {
+            "discount_value": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "lapsed": {
+          "type": "object",
+          "properties": {
+            "discount_value": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "regular_threshold": {
+      "type": "number",
+      "default": 5,
+      "description": "Check-in count at/above which a user is treated as a 'regular' for dynamic coupons"
+    },
+    "lapsed_days": {
+      "type": "number",
+      "default": 30,
+      "description": "Days since last check-in at/above which a user is treated as 'lapsed' for dynamic coupons"
+    }
+  },
+  "required": [
+    "venue_id",
+    "pass_type",
+    "title"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.status": "active"
+        },
+        {
+          "data.manager_ids": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.manager_ids": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.manager_ids": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

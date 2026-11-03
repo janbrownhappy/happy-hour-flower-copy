@@ -1,0 +1,45 @@
+{
+  "name": "Food Truck Schedule Confirmation",
+  "description": "Every Thursday evening \u2014 after the 864FoodTrucks feed lands \u2014 emails food truck owners the week's pre-filled stops to confirm or correct, and re-notifies owners who changed their schedule mid-week.",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "food_truck_schedule_confirmation",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "send_confirmations": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendTruckScheduleConfirmation",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Email truck owners",
+            "description": "Confirm this week's stops"
+          }
+        }
+      }
+    ]
+  },
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 18 * * 4",
+      "one_time_date": null,
+      "timezone": "America/New_York",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  }
+}

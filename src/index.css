@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 20% 97%;
+    --foreground: 24 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+    --primary: 37 91% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 25 30% 94%;
+    --secondary-foreground: 24 10% 20%;
+    --muted: 25 20% 93%;
+    --muted-foreground: 24 10% 45%;
+    --accent: 25 90% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 20% 88%;
+    --input: 25 20% 88%;
+    --ring: 37 91% 45%;
+    --chart-1: 37 91% 45%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Public site/portal always render light, even when the device is in dark mode */
+  .dark .force-light, .force-light {
+    color-scheme: light;
+    --background: 36 20% 97%;
+    --foreground: 24 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+    --primary: 37 91% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 25 30% 94%;
+    --secondary-foreground: 24 10% 20%;
+    --muted: 25 20% 93%;
+    --muted-foreground: 24 10% 45%;
+    --accent: 25 90% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 20% 88%;
+    --input: 25 20% 88%;
+    --ring: 37 91% 45%;
+  }
+
+  .dark {
+    --background: 24 10% 8%;
+    --foreground: 36 20% 95%;
+    --card: 24 10% 12%;
+    --card-foreground: 36 20% 95%;
+    --popover: 24 10% 12%;
+    --popover-foreground: 36 20% 95%;
+    --primary: 37 91% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 24 10% 18%;
+    --secondary-foreground: 36 20% 85%;
+    --muted: 24 10% 18%;
+    --muted-foreground: 24 10% 55%;
+    --accent: 25 90% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 24 10% 22%;
+    --input: 24 10% 22%;
+    --ring: 37 91% 50%;
+    --sidebar-background: 24 10% 10%;
+    --sidebar-foreground: 36 20% 90%;
+    --sidebar-primary: 37 91% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 24 10% 16%;
+    --sidebar-accent-foreground: 36 20% 90%;
+    --sidebar-border: 24 10% 18%;
+    --sidebar-ring: 37 91% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html, body {
+    /* Prevent the rubber-band / scroll-chaining bounce common in mobile web views */
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  /* Native-app feel: no text selection / magnifier on interactive controls and icons; content text stays selectable */
+  button, a[href], [role="button"], [role="tab"], nav, svg, img {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  h1, h2, h3 {
+    @apply font-heading;
+  }
+  /* Keep text selection available where it actually matters */
+  input, textarea, [contenteditable="true"], .allow-select {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+}
+
+@layer utilities {
+  /* Safe-area padding helpers for notches / home indicators */
+  .safe-area-pt { padding-top: env(safe-area-inset-top); }
+  .safe-area-pb { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-area-pl { padding-left: env(safe-area-inset-left); }
+  .safe-area-pr { padding-right: env(safe-area-inset-right); }
+  .safe-area-px {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  /* Guarantee a 44x44px minimum tap target for interactive elements */
+  .tap-target { min-width: 44px; min-height: 44px; }
+}
+
+/* Enforce a 44px minimum tap target on all interactive controls (accessibility / mobile) */
+@layer base {
+  button, a, [role="button"], label[for], input[type="checkbox"], input[type="radio"], select {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Global minimum 44x44px tap target for buttons and links */
+  button, a[href], [role="button"] {
+    min-height: 44px;
+  }
+  button, [role="button"] {
+    min-width: 44px;
+  }
+  /* Inline-flow links inside text should not be forced to 44px (would break paragraphs) */
+  p a[href], li a[href], span a[href], label a[href] {
+    min-height: 0;
+  }
+}
+
+/* On mobile, render Radix Select / DropdownMenu popovers as fixed bottom sheets */
+@media (max-width: 640px) {
+  [data-radix-popper-content-wrapper] > [data-radix-menu-content] {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 60vh !important;
+    border-radius: 1rem 1rem 0 0 !important;
+    border-bottom: none !important;
+    padding-bottom: env(safe-area-inset-bottom) !important;
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.15) !important;
+    animation: bottomSheetUp 0.22s ease-out !important;
+  }
+  /* The popper wrapper itself must span the viewport so the sheet anchors to the bottom */
+  [data-radix-popper-content-wrapper] {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+  /* Larger tap targets for items inside the bottom sheet */
+  [data-radix-menu-content] [role="menuitem"],
+  [data-radix-menu-content] [role="menuitemcheckbox"],
+  [data-radix-menu-content] [role="menuitemradio"] {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+}
+
+@keyframes bottomSheetUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Keep typed & autofilled input text legible (Safari renders autofill text
+   with its own near-invisible fill color on light backgrounds) */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  caret-color: hsl(var(--foreground));
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Blog article body spacing (typography plugin not installed) */
+.prose p { margin: 0 0 1.25em; line-height: 1.75; }
+.prose h2 { font-size: 1.6em; font-weight: 700; margin: 1.8em 0 0.7em; line-height: 1.3; }
+.prose h3 { font-size: 1.3em; font-weight: 700; margin: 1.6em 0 0.6em; line-height: 1.35; }
+.prose h4 { font-weight: 700; margin: 1.4em 0 0.5em; }
+.prose ul, .prose ol { margin: 0 0 1.25em; padding-left: 1.5em; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li { margin: 0.4em 0; }
+.prose blockquote { border-left: 4px solid hsl(var(--border)); padding-left: 1em; font-style: italic; margin: 1.5em 0; }
+.prose img, .prose figure { margin: 1.75em 0; border-radius: var(--radius); }
+.prose a { text-decoration: underline; }
+.prose > :first-child { margin-top: 0; }
+
+/* Hide the marketing-site LeadConnector chat bubble inside the app shell */
+/* Inside the app, shrink the chat bubble and lift it above the bottom nav */
+body.in-app-shell chat-widget {
+  position: fixed !important;
+  right: 0 !important;
+  bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+  z-index: 40 !important;
+  transform: scale(0.75);
+  transform-origin: bottom right;
+}
+
+/* Strip default margins from Leaflet popup content */
+.leaflet-popup-content p,
+.leaflet-popup-content div,
+.leaflet-popup-content span {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.leaflet-popup-content {
+  margin: 8px 12px !important;
+  line-height: 1.4;
+}

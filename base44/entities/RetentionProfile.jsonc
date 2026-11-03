@@ -1,0 +1,144 @@
+{
+  "name": "RetentionProfile",
+  "type": "object",
+  "properties": {
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "consumer",
+        "venue"
+      ],
+      "description": "Which kind of account this retention profile scores"
+    },
+    "account_ref_id": {
+      "type": "string",
+      "description": "Base44 id of the scored account: Profile.id for consumers, Venue.id for venues. Never duplicates the source record \u2014 references it."
+    },
+    "consumer_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) for consumer accounts \u2014 the underlying user"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id) for venue accounts"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 venue owner for venue accounts (denormalized for outreach)"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Account display name at time of scoring (denormalized for the dashboard)"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email at time of scoring (denormalized for outreach + dashboard)"
+    },
+    "subscription_tier": {
+      "type": "string",
+      "description": "Snapshot of the account's tier at scoring time: free / premium / platinum"
+    },
+    "is_paid": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this account was on a paid plan at scoring time"
+    },
+    "mrr": {
+      "type": "number",
+      "default": 0,
+      "description": "Estimated monthly recurring revenue for this account in dollars"
+    },
+    "churn_score": {
+      "type": "number",
+      "default": 0,
+      "description": "Current rules-based churn risk score, 0-100 (higher = more likely to churn)"
+    },
+    "previous_churn_score": {
+      "type": "number",
+      "description": "Churn score from the prior scoring run"
+    },
+    "score_change": {
+      "type": "number",
+      "default": 0,
+      "description": "churn_score minus previous_churn_score (positive = risk rising)"
+    },
+    "risk_category": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "watch",
+        "at_risk",
+        "high_risk",
+        "critical"
+      ],
+      "default": "healthy",
+      "description": "Bucketed risk band derived from churn_score against the configured thresholds"
+    },
+    "primary_risk_reason": {
+      "type": "string",
+      "description": "Human-readable label for the single highest-weighted active signal"
+    },
+    "conversion_score": {
+      "type": "number",
+      "description": "Premium conversion likelihood 0-100 for FREE consumers (high-intent free users). Null for paid/venue accounts."
+    },
+    "lifecycle_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "cooling",
+        "dormant",
+        "churned",
+        "reactivated"
+      ],
+      "description": "Free-consumer lifecycle stage computed from AppSession recency (null for paid/venue accounts)"
+    },
+    "revenue_at_risk": {
+      "type": "number",
+      "default": 0,
+      "description": "mrr multiplied by (churn_score / 100) \u2014 expected monthly revenue exposure"
+    },
+    "last_activity_at": {
+      "type": "string",
+      "description": "ISO timestamp of the account's most recent meaningful activity (session / offer / engagement)"
+    },
+    "last_scored_at": {
+      "type": "string",
+      "description": "ISO timestamp of the most recent scoring run for this account"
+    },
+    "winback_nudge_sent_at": {
+      "type": "string",
+      "description": "ISO timestamp of the last consumer win-back email, throttled to avoid repeats"
+    },
+    "payment_recovery_sent_at": {
+      "type": "string",
+      "description": "ISO timestamp of the last paid-consumer payment-failure follow-up email"
+    }
+  },
+  "required": [
+    "entity_type",
+    "account_ref_id"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

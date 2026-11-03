@@ -1,0 +1,39 @@
+{
+  "name": "Sync Pass Managers on Venue Team Change",
+  "description": "When a venue's owner or editors change, give the current team edit access to its pass designs",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "entity_name": "Venue",
+      "events": [
+        "update"
+      ]
+    },
+    "condition": "${ (.trigger.changed_fields // []) | (index(\"editor_ids\") != null or index(\"owner_id\") != null) }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "sync_pass_managers_venue",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_managers": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncPassManagers",
+            "args": {
+              "venue_id": "${ .trigger.entity_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Update pass design access"
+          }
+        }
+      }
+    ]
+  }
+}

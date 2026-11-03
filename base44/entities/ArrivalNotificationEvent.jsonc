@@ -1,0 +1,94 @@
+{
+  "name": "ArrivalNotificationEvent",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Visit subject (User.id, or 'test-<adminId>' in test mode)"
+    },
+    "push_user_id": {
+      "type": "string",
+      "description": "Real User.id the push is addressed to"
+    },
+    "is_test": {
+      "type": "boolean",
+      "default": false
+    },
+    "visit_id": {
+      "type": "string",
+      "description": "FK to VenueVisit \u2014 one event per visit"
+    },
+    "venue_id": {
+      "type": "string"
+    },
+    "venue_name": {
+      "type": "string"
+    },
+    "arrived_at": {
+      "type": "string",
+      "description": "Arrival timestamp; used for cooldown and 24h rate limit"
+    },
+    "active_special_id": {
+      "type": "string"
+    },
+    "active_special_summary": {
+      "type": "string"
+    },
+    "notification_type": {
+      "type": "string",
+      "default": "ARRIVAL_SPECIAL"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "deep_link": {
+      "type": "string",
+      "description": "In-app path, e.g. /venue/<id>?section=specials"
+    },
+    "processing_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "sent",
+        "failed",
+        "not_sent_disabled",
+        "eligible_delivery_disabled_phase4",
+        "eligible_delivery_disabled_phase5"
+      ],
+      "default": "pending",
+      "description": "eligible_delivery_disabled_phase5 = ELIGIBLE \u2014 DELIVERY DISABLED DURING PHASE 5 (real Despia GPS reading)"
+    },
+    "processing_error": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "user_id",
+    "venue_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

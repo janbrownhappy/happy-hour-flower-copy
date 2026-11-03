@@ -1,0 +1,182 @@
+{
+  "name": "QrCampaign",
+  "type": "object",
+  "properties": {
+    "qr_id": {
+      "type": "string",
+      "description": "Permanent human-readable id, e.g. QR-GVL-000127. Immutable."
+    },
+    "short_code": {
+      "type": "string",
+      "description": "Permanent random short code used in /q/:shortCode. Immutable."
+    },
+    "short_url": {
+      "type": "string",
+      "description": "Public short URL encoded in the QR image. Immutable."
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused"
+      ],
+      "default": "active"
+    },
+    "market": {
+      "type": "string",
+      "description": "Market code, e.g. GVL"
+    },
+    "source": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "placement_type": {
+      "type": "string",
+      "enum": [
+        "coaster",
+        "window_cling",
+        "table_tent",
+        "magazine",
+        "hotel",
+        "visitor_center",
+        "event",
+        "poster",
+        "flyer",
+        "business_card",
+        "venue_signage",
+        "social",
+        "email",
+        "ambassador",
+        "other"
+      ],
+      "default": "other"
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue (Base44 id)"
+    },
+    "special_id": {
+      "type": "string",
+      "description": "FK to HappyHourItem (Base44 id)"
+    },
+    "event_id": {
+      "type": "string",
+      "description": "FK to VenueEvent (Base44 id)"
+    },
+    "partner_id": {
+      "type": "string"
+    },
+    "ambassador_id": {
+      "type": "string",
+      "description": "Partnero ambassador/partner id (reporting only; Partnero stays authoritative)"
+    },
+    "destination_type": {
+      "type": "string",
+      "enum": [
+        "venue",
+        "special",
+        "event",
+        "consumer_premium",
+        "venue_premium",
+        "signup",
+        "onboarding",
+        "url"
+      ],
+      "default": "venue"
+    },
+    "destination_id": {
+      "type": "string"
+    },
+    "destination_url": {
+      "type": "string",
+      "description": "Same-site path only (e.g. /explore) for destination_type=url"
+    },
+    "destination_history": {
+      "type": "array",
+      "description": "Audit trail of destination changes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "changed_at": {
+            "type": "string"
+          },
+          "changed_by": {
+            "type": "string"
+          },
+          "from_type": {
+            "type": "string"
+          },
+          "from_id": {
+            "type": "string"
+          },
+          "to_type": {
+            "type": "string"
+          },
+          "to_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "quantity_printed": {
+      "type": "number"
+    },
+    "date_printed": {
+      "type": "string",
+      "format": "date"
+    },
+    "date_deployed": {
+      "type": "string",
+      "format": "date"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Admin user id who created this campaign"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "qr_id",
+    "short_code",
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

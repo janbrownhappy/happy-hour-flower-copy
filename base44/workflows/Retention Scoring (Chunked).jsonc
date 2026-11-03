@@ -1,0 +1,45 @@
+{
+  "name": "Retention Scoring (Chunked)",
+  "description": "Every 15 minutes: scores a chunk (~500) of accounts for churn risk, cycling the full population roughly every 24h via a cursor.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "*/15 * * * *",
+      "one_time_date": null,
+      "timezone": "UTC",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "retention_scoring_chunked",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "score_chunk": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "scoreRetention",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Score account chunk",
+            "description": "~500 accounts per run"
+          }
+        }
+      }
+    ]
+  }
+}

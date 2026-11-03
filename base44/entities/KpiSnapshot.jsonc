@@ -1,0 +1,79 @@
+{
+  "name": "KpiSnapshot",
+  "type": "object",
+  "properties": {
+    "snapshot_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date (America/New_York) this snapshot represents"
+    },
+    "scope_level": {
+      "type": "string",
+      "enum": [
+        "all",
+        "state",
+        "market",
+        "area"
+      ],
+      "description": "Geographic level"
+    },
+    "scope_id": {
+      "type": "string",
+      "description": "'all', state_code, market_id, or area_id key"
+    },
+    "scope_name": {
+      "type": "string"
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "Parent scope id (state_code for markets, market_id for areas)"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "metric_key -> numeric value. Missing key = not available for this snapshot."
+    },
+    "details": {
+      "type": "object",
+      "description": "Supplementary data (e.g. ambassador leaderboard)"
+    },
+    "collected_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "snapshot_date",
+    "scope_level",
+    "scope_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "email": "jan.brown@happyhourflower.com"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

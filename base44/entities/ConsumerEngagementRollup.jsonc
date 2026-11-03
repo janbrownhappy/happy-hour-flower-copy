@@ -1,0 +1,85 @@
+{
+  "name": "ConsumerEngagementRollup",
+  "type": "object",
+  "properties": {
+    "consumer_id": {
+      "type": "string",
+      "description": "FK to User (Base44 id) \u2014 the consumer this weekly rollup belongs to"
+    },
+    "week_start": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date (YYYY-MM-DD) of the Monday that starts this rollup week"
+    },
+    "week_key": {
+      "type": "string",
+      "description": "Stable dedupe key `${consumer_id}::${week_start}` so a week is only rolled up once"
+    },
+    "app_opens": {
+      "type": "number",
+      "default": 0,
+      "description": "Count of app-open / login sessions during the week (from AppSession)"
+    },
+    "searches": {
+      "type": "number",
+      "default": 0,
+      "description": "Count of searches during the week"
+    },
+    "venue_views": {
+      "type": "number",
+      "default": 0,
+      "description": "Count of venue detail views during the week"
+    },
+    "premium_feature_attempts": {
+      "type": "number",
+      "default": 0,
+      "description": "Count of attempts to use a premium-gated feature during the week (high-intent signal)"
+    },
+    "favorites_added": {
+      "type": "number",
+      "default": 0,
+      "description": "Count of favorites added during the week (from Favorite)"
+    },
+    "directions_requested": {
+      "type": "number",
+      "default": 0,
+      "description": "Count of directions/map-open actions during the week"
+    },
+    "checkins": {
+      "type": "number",
+      "default": 0,
+      "description": "Count of check-ins during the week (from CheckIn)"
+    },
+    "total_activity": {
+      "type": "number",
+      "default": 0,
+      "description": "Sum of all engagement counts for the week \u2014 the single number the baseline compares"
+    }
+  },
+  "required": [
+    "consumer_id",
+    "week_start"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "CrewMember",
+  "type": "object",
+  "properties": {
+    "owner_id": {
+      "type": "string",
+      "description": "Base44 id of the consumer who owns this crew"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the invited crew member"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email of the invited crew member (if invited by email)"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number of the invited crew member (if invited by SMS)"
+    },
+    "invite_method": {
+      "type": "string",
+      "enum": [
+        "email",
+        "sms"
+      ],
+      "description": "How this crew member was invited"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "invited",
+        "joined"
+      ],
+      "default": "invited",
+      "description": "Whether the invitee has joined the app yet"
+    },
+    "member_user_id": {
+      "type": "string",
+      "description": "Base44 id of the crew member once they join the app (if matched)"
+    }
+  },
+  "required": [
+    "owner_id",
+    "invite_method"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

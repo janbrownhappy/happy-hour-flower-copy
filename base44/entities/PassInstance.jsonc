@@ -1,0 +1,186 @@
+{
+  "name": "PassInstance",
+  "type": "object",
+  "properties": {
+    "wallet_pass_id": {
+      "type": "string",
+      "description": "FK to WalletPass template"
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "FK to Venue"
+    },
+    "pass_type": {
+      "type": "string",
+      "enum": [
+        "coupon",
+        "loyalty_card"
+      ]
+    },
+    "consumer_user_id": {
+      "type": "string",
+      "description": "FK to the consumer User (Base44 id)"
+    },
+    "consumer_name": {
+      "type": "string",
+      "description": "Consumer full name at time of issue"
+    },
+    "consumer_email": {
+      "type": "string",
+      "description": "Consumer email at time of issue"
+    },
+    "serial_number": {
+      "type": "string",
+      "description": "Unique serial number for this pass instance (used in barcode)"
+    },
+    "redemption_code": {
+      "type": "string",
+      "description": "Unique redemption code embedded in barcode/QR"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "issued",
+        "redeemed",
+        "expired",
+        "voided"
+      ],
+      "default": "issued",
+      "description": "Current status of this specific pass"
+    },
+    "issued_at": {
+      "type": "string",
+      "description": "ISO timestamp when pass was issued"
+    },
+    "expires_at": {
+      "type": "string",
+      "description": "ISO timestamp when pass expires"
+    },
+    "redeemed_at": {
+      "type": "string",
+      "description": "ISO timestamp when pass was redeemed"
+    },
+    "redeemed_by_user_id": {
+      "type": "string",
+      "description": "Staff user who processed the redemption"
+    },
+    "loyalty_points": {
+      "type": "number",
+      "default": 0,
+      "description": "Current points balance (loyalty cards only)"
+    },
+    "loyalty_max_points": {
+      "type": "number",
+      "description": "Points needed for reward (copied from template at issue time)"
+    },
+    "apple_pass_url": {
+      "type": "string",
+      "description": "URL to download the .pkpass file / PassKit install link"
+    },
+    "delivery_method": {
+      "type": "string",
+      "enum": [
+        "email",
+        "sms",
+        "link"
+      ],
+      "default": "email",
+      "description": "How the pass was delivered to the consumer"
+    },
+    "delivery_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "sent",
+        "failed"
+      ],
+      "default": "pending"
+    },
+    "passkit_id": {
+      "type": "string",
+      "description": "PassKit member/pass ID returned by the provider when the pass was created"
+    },
+    "passkit_program_id": {
+      "type": "string",
+      "description": "PassKit program/template ID this instance belongs to"
+    },
+    "install_status": {
+      "type": "string",
+      "enum": [
+        "not_installed",
+        "installed",
+        "uninstalled"
+      ],
+      "default": "not_installed",
+      "description": "Device install state, synced from PassKit webhooks"
+    },
+    "installed_at": {
+      "type": "string",
+      "description": "ISO timestamp when the pass was first installed on a device"
+    },
+    "uninstalled_at": {
+      "type": "string",
+      "description": "ISO timestamp when the pass was removed from the device"
+    }
+  },
+  "required": [
+    "wallet_pass_id",
+    "venue_id",
+    "pass_type",
+    "serial_number",
+    "redemption_code"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.consumer_user_id": "{{user.id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        }
+      ]
+    }
+  }
+}
