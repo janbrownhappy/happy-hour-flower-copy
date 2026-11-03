@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 const ORIGIN = 'https://happyhourflower.com';
 const NOINDEX = ['/admin', '/portal', '/onboarding', '/login', '/register', '/forgot-password', '/reset-password', '/oauth', '/auth-check', '/profile', '/settings', '/favorites', '/venue-owner', '/VenueOwnerHome', '/venue-ads', '/financial-overview', '/action-items', '/prd-download', '/WalletDesigner', '/StaffRedeem', '/nfc-unlock', '/claim-thank-you', '/blog/rss.xml'];
-const PUBLIC = ['/', '/site/consumers', '/site/venues', '/site/venues/list-your-happy-hour', '/site/happy-hour-flower-vs-yelp-google-maps', '/site/pricing', '/site/pricing/consumers', '/site/pricing/venues', '/blog', '/greenville-neighborhoods', '/preregister', '/claim-venue', '/terms', '/privacy', '/cookies'];
-const ALIAS = { '/LandingPage': '/', '/site': '/', '/site/landing': '/', '/plans': '/site/pricing', '/plans/consumer': '/site/pricing/consumers', '/plans/venue': '/site/pricing/venues' };
+const PUBLIC = ['/', '/greenville-neighborhoods', '/claim-venue', '/terms', '/privacy', '/cookies'];
+const ALIAS = {};
 
 const setTag = (selector, create, apply) => {
   let el = document.head.querySelector(selector);

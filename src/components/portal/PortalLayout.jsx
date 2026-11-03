@@ -1,5 +1,4 @@
 import { Link, Outlet } from 'react-router-dom';
-import SiteBreadcrumbs from '@/components/site/SiteBreadcrumbs';
 
 // Standalone desktop-first layout for the public Venue Claim Portal.
 // Portal-branded header + the app's existing footer style (links reused inline
@@ -31,7 +30,6 @@ export default function PortalLayout() {
       </header>
 
       {/* Page content */}
-      <SiteBreadcrumbs />
       <main className="flex-1">
         <Outlet />
       </main>

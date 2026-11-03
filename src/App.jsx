@@ -8,13 +8,6 @@ const lazy = lazyWithRetry;
 import PageNotFound from './lib/PageNotFound';
 import { isBlockedRequest } from '@/lib/blockedPaths';
 
-// Short public URLs that point at existing marketing pages
-const PUBLIC_ALIASES = [
-  ['/about', '/site/consumers'],
-  ['/contact', '/'],
-  ['/pricing', '/site/pricing'],
-  ['/for-venues', '/site/venues'],
-];
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import { appParams } from '@/lib/app-params';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
@@ -67,7 +60,6 @@ const StaffRedeem = lazy(() => import('@/pages/StaffRedeem'));
 const NfcUnlock = lazy(() => import('@/pages/NfcUnlock'));
 const WalletPassView = lazy(() => import('@/pages/WalletPassView'));
 const TermsOfService = lazy(() => import('@/pages/TermsOfService'));
-const LandingPage = lazy(() => import('@/pages/LandingPage'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 const CookiePolicy = lazy(() => import('@/pages/CookiePolicy'));
 const AdminLogin = lazy(() => import('@/pages/AdminLogin'));
@@ -77,26 +69,10 @@ const PortalClaim = lazy(() => import('@/pages/portal/PortalClaim'));
 const PortalAdd = lazy(() => import('@/pages/portal/PortalAdd'));
 const PortalThankYou = lazy(() => import('@/pages/portal/PortalThankYou'));
 const PortalProof = lazy(() => import('@/pages/portal/PortalProof'));
-const SiteHome = lazy(() => import('@/pages/site/SiteHome'));
-const SiteLanding = lazy(() => import('@/pages/site/SiteLanding'));
-const SiteConsumers = lazy(() => import('@/pages/site/SiteConsumers'));
-const SiteVenues = lazy(() => import('@/pages/site/SiteVenues'));
-const SiteListYourHappyHour = lazy(() => import('@/pages/site/SiteListYourHappyHour'));
-const SiteCompareApps = lazy(() => import('@/pages/site/SiteCompareApps'));
-const SitePricing = lazy(() => import('@/pages/site/SitePricing'));
-const SitePricingConsumers = lazy(() => import('@/pages/site/SitePricingConsumers'));
-const SitePricingVenues = lazy(() => import('@/pages/site/SitePricingVenues'));
-const SiteBlog = lazy(() => import('@/pages/site/SiteBlog'));
-const SiteBlogArticle = lazy(() => import('@/pages/site/SiteBlogArticle'));
-const BlogFeed = lazy(() => import('@/pages/site/BlogFeed'));
 const AdminBlog = lazy(() => import('@/pages/AdminBlog'));
 const AdminChangelog = lazy(() => import('@/pages/AdminChangelog'));
 const AdminQrCodes = lazy(() => import('@/pages/AdminQrCodes'));
 const AdminQrDetail = lazy(() => import('@/pages/AdminQrDetail'));
-const HappyHourIndex = lazy(() => import('@/pages/seo/HappyHourIndex'));
-const HappyHourMarket = lazy(() => import('@/pages/seo/HappyHourMarket'));
-const HappyHourArea = lazy(() => import('@/pages/seo/HappyHourArea'));
-const HappyHourDay = lazy(() => import('@/pages/seo/HappyHourDay'));
 const OAuthConsent = lazy(() => import('@/pages/OAuthConsent'));
 const ConsumerTestPlan = lazy(() => import('@/pages/ConsumerTestPlan'));
 const VenueTestPlan = lazy(() => import('@/pages/VenueTestPlan'));
@@ -106,7 +82,6 @@ import OneSignalUserLink from '@/components/OneSignalUserLink';
 import SeoHead from '@/components/SeoHead';
 import AdminProtectedRoute from '@/components/AdminProtectedRoute';
 import PortalLayout from '@/components/portal/PortalLayout';
-import SiteLayout from '@/components/site/SiteLayout';
 import { SubscriptionProvider } from '@/lib/SubscriptionContext';
 import { LocationProvider } from '@/lib/LocationContext';
 import { base44 } from '@/api/base44Client';
@@ -114,7 +89,6 @@ import { meetsMinimumAge } from '@/lib/ageVerification';
 import useSessionTracker from '@/hooks/useSessionTracker';
 import useSystemTheme from '@/hooks/useSystemTheme';
 import FeaturebaseRoot from '@/components/featurebase/FeaturebaseRoot';
-import WebMcpTools from '@/components/WebMcpTools';
 
 const RouteFallback = () => (
   <div className="fixed inset-0 flex items-center justify-center">
@@ -216,15 +190,13 @@ const AuthenticatedApp = () => {
   }
 
   if (isLoadingPublicSettings || isLoadingAuth || !authChecked) {
-    // Public home page renders immediately; the sign-in check finishes in the background.
+    // The app entry screen renders immediately; the sign-in check finishes in the background.
     if (location.pathname === '/') {
       return (
         <Suspense fallback={<RouteFallback />}>
           <SeoHead />
           <Routes>
-            <Route element={<SiteLayout />}>
-              <Route path="/" element={<SiteHome />} />
-            </Route>
+            <Route path="/" element={<Welcome />} />
           </Routes>
         </Suspense>
       );
@@ -253,10 +225,8 @@ const AuthenticatedApp = () => {
         <Route path="/oauth/consent" element={<OAuthConsent />} />
         <Route path="/review/consumer" element={<ConsumerTestPlan />} />
         <Route path="/review/venue" element={<VenueTestPlan />} />
+        <Route path="/" element={<Welcome />} />
         <Route path="/welcome" element={<Welcome />} />
-        <Route element={<SiteLayout />}>
-          <Route path="/" element={<SiteHome />} />
-        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -265,8 +235,6 @@ const AuthenticatedApp = () => {
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/cookies" element={<CookiePolicy />} />
-        <Route path="/preregister" element={<LandingPage />} />
-        <Route path="/LandingPage" element={<Navigate to="/" replace />} />
         <Route element={<PortalLayout />}>
           <Route path="/portal" element={<PortalSearch />} />
           <Route path="/portal/claim/:venueId" element={<PortalClaim />} />
@@ -274,34 +242,12 @@ const AuthenticatedApp = () => {
           <Route path="/portal/thank-you" element={<PortalThankYou />} />
           <Route path="/portal/proof/:claimId" element={<PortalProof />} />
         </Route>
-        <Route element={<SiteLayout />}>
-          <Route path="/site" element={<Navigate to="/" replace />} />
-          <Route path="/site/landing" element={<Navigate to="/" replace />} />
-          <Route path="/site/consumers" element={<SiteConsumers />} />
-          <Route path="/site/venues" element={<SiteVenues />} />
-          <Route path="/site/venues/list-your-happy-hour" element={<SiteListYourHappyHour />} />
-          <Route path="/site/happy-hour-flower-vs-yelp-google-maps" element={<SiteCompareApps />} />
-          <Route path="/site/pricing" element={<SitePricing />} />
-          <Route path="/site/pricing/consumers" element={<SitePricingConsumers />} />
-          <Route path="/site/pricing/venues" element={<SitePricingVenues />} />
-          <Route path="/blog" element={<SiteBlog />} />
-          <Route path="/blog/:slug" element={<SiteBlogArticle />} />
-          <Route path="/happy-hour" element={<HappyHourIndex />} />
-          <Route path="/happy-hour/:market" element={<HappyHourMarket />} />
-          <Route path="/happy-hour/:market/area/:area" element={<HappyHourArea />} />
-          <Route path="/happy-hour/:market/:day" element={<HappyHourDay />} />
-        </Route>
-        <Route path="/blog/rss.xml" element={<BlogFeed kind="rss" />} />
-        <Route path="/blog/sitemap.xml" element={<BlogFeed kind="sitemap" />} />
         <Route path="/WalletDesigner" element={<Navigate to="/login" replace />} />
         <Route path="/StaffRedeem" element={<Navigate to="/login" replace />} />
         {['/admin/*', '/financial-overview', '/action-items', '/prd-download', '/nfc-unlock', '/venue-owner', '/venue-ads', '/profile', '/settings', '/favorites'].map((p) => (
           <Route key={p} path={p} element={<Navigate to="/login" replace />} />
         ))}
         <Route path="/VenueOwnerHome" element={<Navigate to="/login" replace />} />
-        {PUBLIC_ALIASES.map(([p, to]) => (
-          <Route key={p} path={p} element={<Navigate to={to} replace />} />
-        ))}
         {/* Signed-in app screens keep sending logged-out visitors home, as before */}
         {['/explore', '/map', '/news', '/ask-local', '/more', '/venue/:id', '/best-practices', '/suggest', '/greenville-neighborhoods', '/claim-venue', '/claim-thank-you', '/wallet-pass/:id', '/plans/*', '/onboarding/*', '/venue-dashboard/:id', '/venue-setup/:id', '/wallet-designer/:id', '/staff-redeem/:id', '/auth-check', '/verify-age'].map((p) => (
           <Route key={p} path={p} element={<Navigate to="/" replace />} />
@@ -327,10 +273,11 @@ const AuthenticatedApp = () => {
         <Route path="/oauth/consent" element={<OAuthConsent />} />
         <Route path="/review/consumer" element={<ConsumerTestPlan />} />
         <Route path="/review/venue" element={<VenueTestPlan />} />
-        {/* Root — marketing site for everyone */}
-        <Route element={<SiteLayout />}>
-          <Route path="/" element={<SiteHome />} />
-        </Route>
+        {/* Root — straight into the app for the signed-in role */}
+        <Route
+          path="/"
+          element={<Navigate to={user.role === 'admin' ? '/admin' : user.role === 'venue_owner' ? '/venue-owner' : '/explore'} replace />}
+        />
         <Route path="/welcome" element={<Welcome />} />
 
         {/* Auth (kept available so links/redirects resolve) */}
@@ -400,8 +347,6 @@ const AuthenticatedApp = () => {
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/cookies" element={<CookiePolicy />} />
-        <Route path="/preregister" element={<LandingPage />} />
-        <Route path="/LandingPage" element={<Navigate to="/" replace />} />
         <Route element={<AdminProtectedRoute />}>
           <Route path="/prd-download" element={<PRDDownload />} />
         </Route>
@@ -412,28 +357,6 @@ const AuthenticatedApp = () => {
           <Route path="/portal/thank-you" element={<PortalThankYou />} />
           <Route path="/portal/proof/:claimId" element={<PortalProof />} />
         </Route>
-        <Route element={<SiteLayout />}>
-          <Route path="/site" element={<Navigate to="/" replace />} />
-          <Route path="/site/landing" element={<Navigate to="/" replace />} />
-          <Route path="/site/consumers" element={<SiteConsumers />} />
-          <Route path="/site/venues" element={<SiteVenues />} />
-          <Route path="/site/venues/list-your-happy-hour" element={<SiteListYourHappyHour />} />
-          <Route path="/site/happy-hour-flower-vs-yelp-google-maps" element={<SiteCompareApps />} />
-          <Route path="/site/pricing" element={<SitePricing />} />
-          <Route path="/site/pricing/consumers" element={<SitePricingConsumers />} />
-          <Route path="/site/pricing/venues" element={<SitePricingVenues />} />
-          <Route path="/blog" element={<SiteBlog />} />
-          <Route path="/blog/:slug" element={<SiteBlogArticle />} />
-          <Route path="/happy-hour" element={<HappyHourIndex />} />
-          <Route path="/happy-hour/:market" element={<HappyHourMarket />} />
-          <Route path="/happy-hour/:market/area/:area" element={<HappyHourArea />} />
-          <Route path="/happy-hour/:market/:day" element={<HappyHourDay />} />
-        </Route>
-        <Route path="/blog/rss.xml" element={<BlogFeed kind="rss" />} />
-        <Route path="/blog/sitemap.xml" element={<BlogFeed kind="sitemap" />} />
-        {PUBLIC_ALIASES.map(([p, to]) => (
-          <Route key={p} path={p} element={<Navigate to={to} replace />} />
-        ))}
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
@@ -450,7 +373,6 @@ function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
         <Router>
-          <WebMcpTools />
           <AuthenticatedApp />
         </Router>
         <Toaster />
