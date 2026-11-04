@@ -14,8 +14,8 @@
   "dependencies": {
     "@amplitude/analytics-browser": "^2.47.2",
     "@amplitude/plugin-session-replay-browser": "^1.35.5",
-    "@base44/sdk": "^0.8.57",
-    "@base44/vite-plugin": "^1.0.50",
+    "@base44/sdk": "^0.8.59",
+    "@base44/vite-plugin": "^1.0.52",
     "@hello-pangea/dnd": "^17.0.0",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
