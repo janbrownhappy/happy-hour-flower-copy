@@ -280,12 +280,11 @@ export default function Explore() {
     const matched = venues.filter(v => {
       // Location first: when "near me" was spoken, keep only venues within the radius.
       // This narrows the set dramatically before any keyword/amenity matching runs.
-      // A food truck with no confirmed upcoming stop has no location to show, so
-      // it stays out of the results entirely (its detail page still works).
-      // Trucks without an applicable stop stay findable by name only ("No upcoming location posted").
       // Food trucks only appear when the user picks a food-truck venue type.
+      // A truck with no confirmed upcoming stop still lists, labelled "No upcoming
+      // location posted" — it just carries no coordinates, so no map pin and it
+      // drops out of radius / "near me" results.
       if (v._truck && ![...selectedVenueTypeIds].some(id => truckTypeIds.has(id))) return false;
-      if (v._truck && !v._stop && !(searchLower && v.name?.toLowerCase().includes(searchLower))) return false;
 
       if (nearCoords) {
         // Trucks carry only their selected stop's coordinates (null when none).
