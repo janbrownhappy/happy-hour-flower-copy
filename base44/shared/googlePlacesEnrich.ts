@@ -189,7 +189,10 @@ export async function findPlace(apiKey, venue) {
     const onAddress = results.filter(addrOk);
     match = onAddress.find(named) || (onAddress.length === 1 ? onAddress[0] : null);
   } else {
-    match = results.find(named) || (!address && results.length === 1 ? results[0] : null);
+    // No street address to confirm against: only a name match can identify the business.
+    // Never fall back to "the only candidate in the state" — that is how a different
+    // local business (e.g. a churro cafe vs a churro food truck) gets written onto a venue.
+    match = results.find(named) || null;
   }
 
   return { match: match || null, rejected };
