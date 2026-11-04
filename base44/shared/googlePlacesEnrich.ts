@@ -9,9 +9,23 @@
 // Legacy maps/api/place endpoints cannot be enabled on current Google Cloud
 // projects, so this uses the Places API (New) — same as verifyVenueContacts.
 
+import { secrets } from 'base44:runtime';
 import {
   SOURCES, PROTECTED_SOURCES, isClaimed, planAmenityWrites, recordDiscrepancies, applyProtectedUpdates,
 } from './enrichmentProtection.ts';
+
+// Secrets live in the runtime secrets store; Deno.env is kept as a fallback.
+export function readPlacesKey() {
+  try {
+    const k = secrets.get('GOOGLE_PLACES_API_KEY');
+    if (k) return k;
+  } catch (_e) { /* fall through */ }
+  try {
+    return Deno.env.get('GOOGLE_PLACES_API_KEY');
+  } catch (_e) {
+    return undefined;
+  }
+}
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 const streetNumber = (a) => (String(a || '').match(/\d{1,6}/) || [''])[0];
@@ -113,8 +127,12 @@ export function placeMatchesVenue(venue, place) {
   }
   const city = norm(comp('locality')?.longText);
   const zip = comp('postal_code')?.longText || '';
-  // Admin "new venue" lookups have no location on file yet; their results are reviewed by hand.
-  if (!ourState && !venue?.city && !venue?.zip_code && !venue?.address) return { ok: true, reason: 'no location on file — manual review' };
+    // Nothing to confirm against (no city, ZIP, address or coordinates — e.g. a food truck
+  // imported with only a state): the state check above is the only geo evidence we have,
+  // so accept it and mark the match as one that needs review.
+  if (!venue?.city && !venue?.zip_code && !venue?.address) {
+    return { ok: true, reason: ourState ? `state ${state} (no city/ZIP on file — manual review)` : 'no location on file — manual review' };
+  }
   if ((venue?.city && city === norm(venue.city)) || (venue?.zip_code && zip === String(venue.zip_code).trim())) {
     return { ok: true, reason: `state ${state}, city/ZIP match` };
   }
@@ -259,7 +277,7 @@ export function formatOpeningHours(place) {
 // Any Places failure (quota, network, no match) resolves to matched:false so the
 // caller degrades to the LLM-only flow instead of failing the enrichment.
 export async function runPlacesPrepass(query, { lite = false } = {}) {
-  const apiKey = Deno.env.get('GOOGLE_PLACES_API_KEY');
+  const apiKey = readPlacesKey();
   if (!apiKey) return { matched: false, reason: 'GOOGLE_PLACES_API_KEY not set' };
   if (!query?.name && !query?.website) return { matched: false, reason: 'No name or website to search' };
 
