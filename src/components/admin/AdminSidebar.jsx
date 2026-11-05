@@ -7,7 +7,7 @@ import { openChangelog, openMessenger, isFeaturebaseConfigured } from '@/lib/fea
 export default function AdminSidebar({ groups, counts, currentTab, openGroups, toggleGroup, onSelectTab, onOpenDrillDown }) {
   return (
     <div className="flex flex-col h-full">
-      <div className="p-4 border-b border-border">
+      <div className="px-3 py-2.5 border-b border-border">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
             <LayoutDashboard className="w-3.5 h-3.5 text-white" />
@@ -20,45 +20,45 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
       </div>
 
       {/* Quick links */}
-      <div className="p-1.5 space-y-0 border-b border-border">
-        <RouterLink to="/explore" className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
-          <Compass className="w-4 h-4" />
+      <div className="p-1 space-y-0 border-b border-border">
+        <RouterLink to="/explore" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+          <Compass className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Explore Page</span>
-          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+          <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/venue-owner" className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
-          <Store className="w-4 h-4" />
+        <RouterLink to="/venue-owner" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+          <Store className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Venue Owner Dashboard</span>
-          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+          <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/marketing" className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-semibold text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all">
-          <Mail className="w-4 h-4" />
+        <RouterLink to="/admin/marketing" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-semibold text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all">
+          <Mail className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Marketing & Email</span>
-          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+          <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/qr" className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
-          <QrCode className="w-4 h-4" />
+        <RouterLink to="/admin/qr" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+          <QrCode className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Marketing · QR Codes</span>
-          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+          <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/blog" className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
-          <Newspaper className="w-4 h-4" />
+        <RouterLink to="/admin/blog" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+          <Newspaper className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Blog</span>
-          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+          <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/changelog" className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
-          <History className="w-4 h-4" />
+        <RouterLink to="/admin/changelog" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+          <History className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Changelog</span>
-          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+          <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
         {isFeaturebaseConfigured() && (
           <>
-            <button onClick={openChangelog} className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
-              <Megaphone className="w-4 h-4" />
+            <button onClick={openChangelog} className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+              <Megaphone className="w-3.5 h-3.5" />
               <span className="flex-1 truncate text-left">What's New</span>
             </button>
-            <button onClick={openMessenger} className="w-full min-h-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
-              <LifeBuoy className="w-4 h-4" />
+            <button onClick={openMessenger} className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+              <LifeBuoy className="w-3.5 h-3.5" />
               <span className="flex-1 truncate text-left">Support</span>
             </button>
           </>
