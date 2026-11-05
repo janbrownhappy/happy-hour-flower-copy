@@ -21,43 +21,43 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
 
       {/* Quick links */}
       <div className="p-1 space-y-0 border-b border-border">
-        <RouterLink to="/explore" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/explore" className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <Compass className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Explore Page</span>
           <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/venue-owner" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/venue-owner" className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <Store className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Venue Owner Dashboard</span>
           <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/marketing" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-semibold text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all">
+        <RouterLink to="/admin/marketing" className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-semibold text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all">
           <Mail className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Marketing & Email</span>
           <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/qr" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/admin/qr" className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <QrCode className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Marketing · QR Codes</span>
           <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/blog" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/admin/blog" className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <Newspaper className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Blog</span>
           <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/changelog" className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/admin/changelog" className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <History className="w-3.5 h-3.5" />
           <span className="flex-1 truncate">Changelog</span>
           <ExternalLink className="w-3 h-3 opacity-60" />
         </RouterLink>
         {isFeaturebaseConfigured() && (
           <>
-            <button onClick={openChangelog} className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+            <button onClick={openChangelog} className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
               <Megaphone className="w-3.5 h-3.5" />
               <span className="flex-1 truncate text-left">What's New</span>
             </button>
-            <button onClick={openMessenger} className="w-full min-h-0 flex items-center gap-2 px-2 py-0.5 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+            <button onClick={openMessenger} className="w-full !min-h-0 flex items-center gap-2 px-2 py-1 rounded-md text-[13px] leading-tight font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
               <LifeBuoy className="w-3.5 h-3.5" />
               <span className="flex-1 truncate text-left">Support</span>
             </button>
@@ -108,7 +108,7 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
                     <button
                       key={tab.value}
                       onClick={() => onSelectTab(tab.value)}
-                      className={`w-full min-h-0 flex items-center gap-2.5 pl-7 pr-3 py-1 rounded-md text-sm font-medium transition-all text-left leading-tight ${currentTab === tab.value ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}`}
+                      className={`w-full !min-h-0 flex items-center gap-2 pl-7 pr-3 py-1 rounded-md text-[13px] font-medium transition-all text-left leading-tight ${currentTab === tab.value ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}`}
                     >
                       {tab.icon}
                       <span className="flex-1 truncate">{tab.label}</span>
