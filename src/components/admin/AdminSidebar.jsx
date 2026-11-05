@@ -86,7 +86,7 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
       </div>
 
       {/* Nav items — grouped into collapsible sections */}
-      <nav className="flex-1 p-2 space-y-1 overflow-y-auto">
+      <nav className="flex-1 p-2 space-y-0.5 overflow-y-auto">
         {groups.map(group => {
           const isOpen = openGroups[group.label];
           const groupBadge = group.tabs.reduce((sum, t) => sum + (t.badge > 0 ? t.badge : 0), 0);
@@ -94,7 +94,7 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
             <div key={group.label}>
               <button
                 onClick={() => toggleGroup(group.label)}
-                className="w-full flex items-center gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground/70 hover:text-foreground transition-colors"
+                className="w-full min-h-0 flex items-center gap-2 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground/70 hover:text-foreground transition-colors"
               >
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? '' : '-rotate-90'}`} />
                 <span className="flex-1 text-left truncate">{group.label}</span>
@@ -103,12 +103,12 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
                 )}
               </button>
               {isOpen && (
-                <div className="space-y-0.5 mt-0.5">
+                <div className="space-y-0 mt-0">
                   {group.tabs.map(tab => (
                     <button
                       key={tab.value}
                       onClick={() => onSelectTab(tab.value)}
-                      className={`w-full flex items-center gap-2.5 pl-7 pr-3 py-2 rounded-lg text-sm font-medium transition-all text-left ${currentTab === tab.value ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}`}
+                      className={`w-full min-h-0 flex items-center gap-2.5 pl-7 pr-3 py-1 rounded-md text-sm font-medium transition-all text-left leading-tight ${currentTab === tab.value ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}`}
                     >
                       {tab.icon}
                       <span className="flex-1 truncate">{tab.label}</span>
