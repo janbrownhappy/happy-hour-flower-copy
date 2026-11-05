@@ -20,44 +20,44 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
       </div>
 
       {/* Quick links */}
-      <div className="p-2 space-y-1 border-b border-border">
-        <RouterLink to="/explore" className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+      <div className="p-2 space-y-0.5 border-b border-border">
+        <RouterLink to="/explore" className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <Compass className="w-4 h-4" />
           <span className="flex-1 truncate">Explore Page</span>
           <ExternalLink className="w-3.5 h-3.5 opacity-60" />
         </RouterLink>
-        <RouterLink to="/venue-owner" className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/venue-owner" className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <Store className="w-4 h-4" />
           <span className="flex-1 truncate">Venue Owner Dashboard</span>
           <ExternalLink className="w-3.5 h-3.5 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/marketing" className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all">
+        <RouterLink to="/admin/marketing" className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all">
           <Mail className="w-4 h-4" />
           <span className="flex-1 truncate">Marketing & Email</span>
           <ExternalLink className="w-3.5 h-3.5 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/qr" className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/admin/qr" className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <QrCode className="w-4 h-4" />
           <span className="flex-1 truncate">Marketing · QR Codes</span>
           <ExternalLink className="w-3.5 h-3.5 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/blog" className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/admin/blog" className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <Newspaper className="w-4 h-4" />
           <span className="flex-1 truncate">Blog</span>
           <ExternalLink className="w-3.5 h-3.5 opacity-60" />
         </RouterLink>
-        <RouterLink to="/admin/changelog" className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+        <RouterLink to="/admin/changelog" className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
           <History className="w-4 h-4" />
           <span className="flex-1 truncate">Changelog</span>
           <ExternalLink className="w-3.5 h-3.5 opacity-60" />
         </RouterLink>
         {isFeaturebaseConfigured() && (
           <>
-            <button onClick={openChangelog} className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+            <button onClick={openChangelog} className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
               <Megaphone className="w-4 h-4" />
               <span className="flex-1 truncate text-left">What's New</span>
             </button>
-            <button onClick={openMessenger} className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
+            <button onClick={openMessenger} className="w-full min-h-0 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all">
               <LifeBuoy className="w-4 h-4" />
               <span className="flex-1 truncate text-left">Support</span>
             </button>
@@ -66,20 +66,20 @@ export default function AdminSidebar({ groups, counts, currentTab, openGroups, t
       </div>
 
       {/* Mini stats */}
-      <div className="p-3 grid grid-cols-2 gap-2 border-b border-border">
-        <div className="bg-muted rounded-lg p-2 text-center cursor-pointer hover:bg-muted/70" onClick={() => onOpenDrillDown('venues')}>
+      <div className="p-2 grid grid-cols-2 gap-1.5 border-b border-border">
+        <div className="bg-muted rounded-lg p-1.5 text-center cursor-pointer hover:bg-muted/70" onClick={() => onOpenDrillDown('venues')}>
           <p className="text-lg font-bold text-primary leading-none">{counts.venues}</p>
           <p className="text-xs text-muted-foreground">Venues</p>
         </div>
-        <div className="bg-muted rounded-lg p-2 text-center cursor-pointer hover:bg-muted/70" onClick={() => onOpenDrillDown('listings')}>
+        <div className="bg-muted rounded-lg p-1.5 text-center cursor-pointer hover:bg-muted/70" onClick={() => onOpenDrillDown('listings')}>
           <p className="text-lg font-bold text-primary leading-none">{counts.listings}</p>
           <p className="text-xs text-muted-foreground">Listings</p>
         </div>
-        <div className="bg-muted rounded-lg p-2 text-center cursor-pointer hover:bg-muted/70" onClick={() => onOpenDrillDown('users')}>
+        <div className="bg-muted rounded-lg p-1.5 text-center cursor-pointer hover:bg-muted/70" onClick={() => onOpenDrillDown('users')}>
           <p className="text-lg font-bold text-primary leading-none">{counts.users}</p>
           <p className="text-xs text-muted-foreground">Users</p>
         </div>
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-2 text-center">
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-1.5 text-center">
           <p className="text-lg font-bold text-amber-600 leading-none">{counts.claims}</p>
           <p className="text-xs text-amber-700">Pending</p>
         </div>
